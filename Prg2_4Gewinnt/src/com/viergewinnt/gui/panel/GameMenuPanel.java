@@ -7,13 +7,13 @@ import java.awt.LayoutManager;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-public class CreateGamePanel extends JPanel {
+public class GameMenuPanel extends JPanel {
 	
 	JButton hostGame;
 	JButton enterGame;
 	private int amountOfComponents;
 	
-	public CreateGamePanel(){
+	public GameMenuPanel(){
 		super();
 		amountOfComponents = 0;
 		hostGame = new JButton("Neues Spiel erstellen");

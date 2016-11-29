@@ -4,7 +4,7 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 
 import com.viergewinnt.gui.menubar.GameMenuBar;
-import com.viergewinnt.gui.panel.CreateGamePanel;
+import com.viergewinnt.gui.panel.GameMenuPanel;
 
 public class GameFrame extends JFrame{
 
@@ -14,7 +14,7 @@ public class GameFrame extends JFrame{
 			this.setTitle("4-Gewinnt");
 			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			this.setJMenuBar(new GameMenuBar(this));
-			CreateGamePanel panel = new CreateGamePanel();
+			GameMenuPanel panel = new GameMenuPanel();
 			this.setContentPane(panel);
 			this.setVisible(true);
 			panel.initialize();

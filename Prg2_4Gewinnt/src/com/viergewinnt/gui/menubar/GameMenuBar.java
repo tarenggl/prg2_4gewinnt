@@ -9,7 +9,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-import com.viergewinnt.gui.panel.CreateGamePanel;
+import com.viergewinnt.gui.panel.GameMenuPanel;
 
 public class GameMenuBar extends JMenuBar{
 
@@ -34,7 +34,7 @@ public class GameMenuBar extends JMenuBar{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				CreateGamePanel panel = new CreateGamePanel();
+				GameMenuPanel panel = new GameMenuPanel();
 				mainFrameContainer.setContentPane(panel);
 				panel.initialize();
 			}
