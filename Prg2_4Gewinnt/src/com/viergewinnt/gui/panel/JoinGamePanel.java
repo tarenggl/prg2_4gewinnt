@@ -1,5 +1,10 @@
 package com.viergewinnt.gui.panel;
 
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.InetAddress;
+import java.net.MulticastSocket;
+
 import javax.swing.JPanel;
 
 public class JoinGamePanel extends JPanel{
@@ -7,7 +12,7 @@ public class JoinGamePanel extends JPanel{
 	
 	
 	
-	private void gt() {
+	private void gt() throws IOException {
 		MulticastSocket socket = new MulticastSocket(4446);
 		InetAddress group = InetAddress.getByName("203.0.113.0");
 		socket.joinGroup(group);
