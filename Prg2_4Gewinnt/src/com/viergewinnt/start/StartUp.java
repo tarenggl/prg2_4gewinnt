@@ -1,5 +1,9 @@
 package com.viergewinnt.start;
 
-public class StartUp {
+import com.viergewinnt.gui.GameFrame;
 
+public class StartUp {
+	public static void main(String[] args) {
+		new GameFrame();
+	}
 }
