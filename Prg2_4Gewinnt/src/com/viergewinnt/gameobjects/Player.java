@@ -1,5 +1,12 @@
 package com.viergewinnt.gameobjects;
 
-public class Player {
+import java.awt.Color;
 
+public class Player {
+	private Color color;
+	
+	public Player(Color color) {
+		this.color = color;
+	}
+	
 }

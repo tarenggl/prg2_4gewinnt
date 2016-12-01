@@ -1,4 +1,4 @@
-package com.viergewinnt.host;
+package com.viergewinnt.network;
 
 public class GameHoster {
 
