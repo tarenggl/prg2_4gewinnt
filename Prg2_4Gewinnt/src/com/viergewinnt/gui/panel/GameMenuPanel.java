@@ -18,7 +18,7 @@ public class GameMenuPanel extends JPanel {
 		amountOfComponents = 0;
 		hostGame = new JButton("Neues Spiel erstellen");
 		enterGame = new JButton("Spiel finden");
-		this.setBackground(Color.BLUE.brighter());
+		this.setBackground(Color.GRAY.brighter());
 		setLayout(null);
 	}
 	
