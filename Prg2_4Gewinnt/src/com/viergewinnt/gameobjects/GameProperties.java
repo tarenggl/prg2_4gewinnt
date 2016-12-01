@@ -19,4 +19,16 @@ public class GameProperties {
 		return this.stoneList;
 	}
 	
+	public Stone getStoneAt(int column, int row) {
+		for(Stone s : stoneList) {
+			if (s.getRow() == row) {
+				if (s.getColumn() == column) {
+					return s;
+				}
+			}
+		}
+		
+		return null;
+	}
+	
 }
