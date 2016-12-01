@@ -22,7 +22,7 @@ public class GameMenuBar extends JMenuBar{
 	public GameMenuBar(JFrame mainFrame) {
 		gameMenu = new JMenu("Spiel");
 		newGameMenu = new JMenuItem("Neues Spiel..");
-		cancelGameMenu = new JMenuItem("Siel abbrechen");
+		cancelGameMenu = new JMenuItem("Spiel abbrechen");
 		gameMenu.add(newGameMenu);
 		gameMenu.add(cancelGameMenu);
 		add(gameMenu);
