@@ -18,8 +18,12 @@ public class GameGrid extends JPanel{
 
 	public GameGrid() {
 		super();
+<<<<<<< HEAD
 		this.setBackground(Color.GRAY.brighter());
 		
+=======
+		this.setBackground(Color.RED.brighter());
+>>>>>>> refs/remotes/origin/4gewinnt
 	}
 	
 	@Override

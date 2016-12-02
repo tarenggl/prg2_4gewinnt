@@ -11,23 +11,21 @@ public class GameContainer extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	BorderLayout border;
 	GameHeader header;	
 	GameGrid grid;
 	
 	public GameContainer(){
 		super();
-		border = new BorderLayout();
-		this.setLayout(border);
+		this.setLayout(new BorderLayout());
 		header = new GameHeader();
 		grid = new GameGrid();
-		this.setBackground(Color.GRAY.brighter());
+		this.setBackground(Color.YELLOW.brighter());
 		this.initialize();
 		repaint();
 	}
 	
 	public void initialize() {
-		border.addLayoutComponent(header, BorderLayout.NORTH);
-		border.addLayoutComponent(grid, BorderLayout.CENTER);
+		add(header, BorderLayout.NORTH);
+		add(grid, BorderLayout.CENTER);
 	}
 }
