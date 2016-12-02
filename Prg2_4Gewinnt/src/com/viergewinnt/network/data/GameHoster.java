@@ -1,4 +1,4 @@
-package com.viergewinnt.network;
+package com.viergewinnt.network.data;
 
 import java.io.Serializable;
 
@@ -30,6 +30,11 @@ public class GameHoster implements Serializable {
 
 	public void setHostAddress(String hostAddress) {
 		this.hostAddress = hostAddress;
+	}
+	
+	@Override
+	public String toString() {
+		return getGameName() + " - " + getHostAddress();
 	}
 
 }

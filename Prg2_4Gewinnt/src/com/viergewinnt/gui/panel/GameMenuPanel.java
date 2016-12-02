@@ -10,6 +10,8 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import com.viergewinnt.gui.GameFrame;
+import com.viergewinnt.gui.panel.network.HostGamePanel;
+import com.viergewinnt.gui.panel.network.JoinGamePanel;
 
 public class GameMenuPanel extends JPanel {
 	
@@ -34,11 +36,27 @@ public class GameMenuPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				mainFrameContainer.SetNewContentPanel(new GameContainer());
+				mainFrameContainer.SetNewContentPanel(new HostGamePanel());
 			}
 		});
 		enterGame = new JButton("Spiel finden");
+		enterGame.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				mainFrameContainer.SetNewContentPanel(new JoinGamePanel());
+			}
+		});
 		computerGame = new JButton("Neues Spiel gegen Computer");
+		computerGame.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				mainFrameContainer.SetNewContentPanel(new GameContainer());
+			}
+		});
 		this.setBackground(Color.GRAY.brighter());
 		setLayout(null);
 	}
