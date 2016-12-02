@@ -25,7 +25,7 @@ public class FindHoster {
 			clientSocket.setSoTimeout(1000);
 			for (int i = 0; i < 4; i++) {
 				try {
-					Object serverAnswer = NetworkHelper.read(clientSocket);
+					Object serverAnswer = NetworkDatagramHelper.read(clientSocket);
 					GameHoster gameHostInfo = (GameHoster) serverAnswer;
 					foundServers.add(gameHostInfo);
 				} catch (SocketTimeoutException ex) {

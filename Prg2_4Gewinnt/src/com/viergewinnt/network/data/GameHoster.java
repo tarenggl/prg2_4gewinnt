@@ -11,10 +11,12 @@ public class GameHoster implements Serializable {
 	
 	private String gameName;
 	private String hostAddress;
+	private int gamePort;
 	
-	public GameHoster(String gameName, String hostAddress) {
-		this.setGameName(gameName);
-		this.setHostAddress(hostAddress);
+	public GameHoster(String gameName, String hostAddress, int gamePort) {
+		setGameName(gameName);
+		setHostAddress(hostAddress);
+		setGamePort(gamePort);
 	}
 	
 	public String getGameName() {
@@ -35,6 +37,14 @@ public class GameHoster implements Serializable {
 	@Override
 	public String toString() {
 		return getGameName() + " - " + getHostAddress();
+	}
+
+	public int getGamePort() {
+		return gamePort;
+	}
+
+	public void setGamePort(int gamePort) {
+		this.gamePort = gamePort;
 	}
 
 }

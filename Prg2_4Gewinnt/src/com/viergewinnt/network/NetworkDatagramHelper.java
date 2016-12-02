@@ -11,7 +11,7 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.UnknownHostException;
 
-public class NetworkHelper {
+public class NetworkDatagramHelper {
 
 	public static Object read(DatagramSocket datagramSocket) throws IOException, ClassNotFoundException {
 		byte[] recvBuf = new byte[1024];

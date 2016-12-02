@@ -13,7 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import com.viergewinnt.network.NetworkHelper;
+import com.viergewinnt.network.NetworkDatagramHelper;
 import com.viergewinnt.network.data.GameHoster;
 
 public class HostGamePanel extends JPanel {
@@ -48,13 +48,13 @@ public class HostGamePanel extends JPanel {
 							DatagramSocket serverDatagrammsocket = new DatagramSocket(12345);
 							byte[] byteBuffer = new byte[1024];
 							DatagramPacket recievedRequest = new DatagramPacket(byteBuffer, 1024);
-							GameHoster gameHoster = new GameHoster("Spiel von Alois", InetAddress.getLocalHost().getHostAddress());
+							GameHoster gameHoster = new GameHoster("Spiel von Alois", InetAddress.getLocalHost().getHostAddress(), 12344);
 							for (int i = 0; i < 5; i++) {
 								System.out.println("Server starts listening");
 								serverDatagrammsocket.receive(recievedRequest);
 								String received = new String(recievedRequest.getData());
 								System.out.println("Client requestMessage: " + received);
-								NetworkHelper.send(gameHoster, serverDatagrammsocket, recievedRequest);
+								NetworkDatagramHelper.send(gameHoster, serverDatagrammsocket, recievedRequest);
 							}
 						} catch (SocketException ex) {
 							ex.printStackTrace();

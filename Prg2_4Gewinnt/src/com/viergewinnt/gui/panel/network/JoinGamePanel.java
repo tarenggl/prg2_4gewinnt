@@ -50,7 +50,7 @@ public class JoinGamePanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				hoster.clear();
-				hoster.addElement(new GameHoster("...", ""));
+				hoster.addElement(new GameHoster("...", "", 0));
 				FindHoster findHoster = new FindHoster();
 				Thread td = new Thread(new Runnable() {
 					@Override
@@ -58,7 +58,7 @@ public class JoinGamePanel extends JPanel{
 						List<GameHoster> foundHosts = findHoster.searchForHostedGames();
 						hoster.clear();
 						if(foundHosts.size() == 0) {
-							hoster.addElement(new GameHoster("Nothing found", ""));
+							hoster.addElement(new GameHoster("Nothing found", "", 0));
 						}
 						for (GameHoster gameHoster : foundHosts) {
 							hoster.addElement(gameHoster);
