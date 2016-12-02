@@ -13,7 +13,6 @@ public class GameGrid extends JPanel {
 
 	public GameGrid() {
 		super();
-		
 		this.setBackground(Color.RED.brighter());
 	}
 
