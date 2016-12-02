@@ -43,7 +43,24 @@ public class Controller {
 		return true;
 	}
 	
+	public boolean verticalWin(Stone stone) {
+		int row = stone.getRow();
+		int column = stone.getColumn();
+		Stone currentStone;
+		
+		for(int i = row + 1; i <= row + 3; i++) {
+			currentStone = game.getStoneAt(column, i);
+			if(currentStone == null || currentStone.getColor() != stone.getColor()) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
 	public boolean diagonalLeftWin() {
+		
+		
+		
 		return true;
 		
 	}
