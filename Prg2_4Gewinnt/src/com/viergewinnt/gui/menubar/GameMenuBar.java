@@ -1,25 +1,29 @@
 package com.viergewinnt.gui.menubar;
 
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import com.viergewinnt.gui.GameFrame;
 import com.viergewinnt.gui.panel.GameMenuPanel;
 
 public class GameMenuBar extends JMenuBar{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	JMenu gameMenu;
 	JMenuItem newGameMenu;
 	JMenuItem cancelGameMenu;
 	
-	JFrame mainFrameContainer;
+	GameFrame mainFrameContainer;
 	
-	public GameMenuBar(JFrame mainFrame) {
+	public GameMenuBar(GameFrame mainFrame) {
 		gameMenu = new JMenu("Spiel");
 		newGameMenu = new JMenuItem("Neues Spiel..");
 		cancelGameMenu = new JMenuItem("Spiel abbrechen");
@@ -27,6 +31,7 @@ public class GameMenuBar extends JMenuBar{
 		gameMenu.add(cancelGameMenu);
 		add(gameMenu);
 		mainFrameContainer = mainFrame;
+		initializeNewGameMenu();
 	}
 	
 	private void initializeNewGameMenu() {
@@ -34,9 +39,7 @@ public class GameMenuBar extends JMenuBar{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GameMenuPanel panel = new GameMenuPanel();
-				mainFrameContainer.setContentPane(panel);
-				panel.initialize();
+				mainFrameContainer.SetNewContentPanel(new GameMenuPanel(mainFrameContainer));				
 			}
 		});
 	}
