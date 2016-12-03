@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import com.viergewinnt.controller.creategame.JoinNetworkGameController;
 import com.viergewinnt.gui.GameFrame;
 import com.viergewinnt.gui.panel.network.HostGamePanel;
 import com.viergewinnt.gui.panel.network.JoinGamePanel;
@@ -45,7 +46,7 @@ public class GameMenuPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				mainFrameContainer.SetNewContentPanel(new JoinGamePanel());
+				new JoinNetworkGameController(mainFrameContainer).show();
 			}
 		});
 		computerGame = new JButton("Neues Spiel gegen Computer");

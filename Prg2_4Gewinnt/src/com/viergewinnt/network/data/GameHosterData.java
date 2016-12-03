@@ -2,7 +2,7 @@ package com.viergewinnt.network.data;
 
 import java.io.Serializable;
 
-public class GameHoster implements Serializable {
+public class GameHosterData implements Serializable {
 
 	/**
 	 * 
@@ -13,7 +13,7 @@ public class GameHoster implements Serializable {
 	private String hostAddress;
 	private int gamePort;
 	
-	public GameHoster(String gameName, String hostAddress, int gamePort) {
+	public GameHosterData(String gameName, String hostAddress, int gamePort) {
 		setGameName(gameName);
 		setHostAddress(hostAddress);
 		setGamePort(gamePort);
