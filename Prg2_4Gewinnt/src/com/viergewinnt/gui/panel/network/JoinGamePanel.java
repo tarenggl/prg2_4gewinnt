@@ -45,14 +45,6 @@ public class JoinGamePanel extends JPanel{
 	private void initServerList(DefaultListModel<GameHosterData> hoster) {
 		serverList = new JList<>(hoster);
 		serverList.setLayoutOrientation(JList.HORIZONTAL_WRAP);
-		serverList.addListSelectionListener(new ListSelectionListener() {
-			
-			@Override
-			public void valueChanged(ListSelectionEvent e) {
-				networkGame.setSelectedServer(serverList.getSelectedValue());
-				System.out.println(serverList.getSelectedValue());
-			}
-		});
 		JScrollPane listScroller = new JScrollPane(serverList);
 		listScroller.setPreferredSize(new Dimension(300, 180));
 		add(listScroller);

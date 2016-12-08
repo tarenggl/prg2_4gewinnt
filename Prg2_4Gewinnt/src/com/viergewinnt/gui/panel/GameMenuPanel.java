@@ -13,6 +13,7 @@ import com.viergewinnt.controller.creategame.JoinNetworkGameController;
 import com.viergewinnt.gui.GameFrame;
 import com.viergewinnt.gui.panel.network.HostGamePanel;
 import com.viergewinnt.gui.panel.network.JoinGamePanel;
+import com.viergewinnt.model.GameMenuModel;
 
 public class GameMenuPanel extends JPanel {
 	
@@ -21,66 +22,22 @@ public class GameMenuPanel extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	JButton hostGame;
-	JButton enterGame;
-	JButton computerGame;
-	GameFrame mainFrameContainer;
 	private int amountOfComponents;
 	
-	public GameMenuPanel(GameFrame frame){
-		super();
-		this.mainFrameContainer = frame;
+	public GameMenuPanel(GameMenuModel model){
 		amountOfComponents = 0;
-		hostGame = new JButton("Neues Netzwerkspiel erstellen");
-		hostGame.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				mainFrameContainer.SetNewContentPanel(new HostGamePanel());
-			}
-		});
-		enterGame = new JButton("Spiel finden");
-		enterGame.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				new JoinNetworkGameController(mainFrameContainer).show();
-			}
-		});
-		computerGame = new JButton("Neues Spiel gegen Computer");
-		computerGame.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				mainFrameContainer.SetNewContentPanel(new GameContainer());
-			}
-		});
+		for(String key : model.getMenuActions().keySet()) {
+			initializeButton(key, model.getMenuActions().get(key));
+		}
 		this.setBackground(Color.GRAY.brighter());
 		setLayout(null);
 	}
 	
-	private void initialize() {
-		amountOfComponents=0;
-		removeAll();
-		initializeButton(hostGame);
-		initializeButton(enterGame);
-		initializeButton(computerGame);
-		repaint();
-	}
-	
-	@Override
-	public void paint(Graphics g) {
-		initialize();
-		super.paint(g);
-	}
-	
-	
-	private void initializeButton(JButton button){
-		button.setBounds(getWidth() / 2 - 250, 30 + 70 * amountOfComponents + 7 * amountOfComponents, 500, 70);
+	private void initializeButton(String buttonDescription, ActionListener action){
+		JButton button = new JButton(buttonDescription);
+		button.setBounds(300 - 250, 30 + 70 * amountOfComponents + 7 * amountOfComponents, 500, 70);
 		button.setFont(new Font("Arial", Font.PLAIN, 30));
+		button.addActionListener(action);
 		add(button);
 		amountOfComponents++;
 	}

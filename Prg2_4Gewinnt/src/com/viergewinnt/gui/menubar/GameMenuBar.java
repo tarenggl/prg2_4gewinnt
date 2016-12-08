@@ -9,38 +9,27 @@ import javax.swing.JMenuItem;
 
 import com.viergewinnt.gui.GameFrame;
 import com.viergewinnt.gui.panel.GameMenuPanel;
+import com.viergewinnt.model.GameMenuModel;
 
-public class GameMenuBar extends JMenuBar{
+public class GameMenuBar extends JMenuBar {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	JMenu gameMenu;
-	JMenuItem newGameMenu;
-	JMenuItem cancelGameMenu;
-	
-	GameFrame mainFrameContainer;
-	
-	public GameMenuBar(GameFrame mainFrame) {
-		gameMenu = new JMenu("Spiel");
-		newGameMenu = new JMenuItem("Neues Spiel..");
-		cancelGameMenu = new JMenuItem("Spiel abbrechen");
-		gameMenu.add(newGameMenu);
-		gameMenu.add(cancelGameMenu);
-		add(gameMenu);
-		mainFrameContainer = mainFrame;
-		initializeNewGameMenu();
+
+	public GameMenuBar(GameMenuModel model, String menuName) {
+		JMenu menu = new JMenu(menuName);
+		
+		for(String key: model.getMenuActions().keySet()) {
+			menu.add(getMenuPoint(key, model.getMenuActions().get(key)));
+		}
+		add(menu);
 	}
-	
-	private void initializeNewGameMenu() {
-		newGameMenu.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				mainFrameContainer.SetNewContentPanel(new GameMenuPanel(mainFrameContainer));				
-			}
-		});
+
+	private JMenuItem getMenuPoint(String description, ActionListener actionListener) {
+		JMenuItem menuItem = new JMenuItem(description);
+		menuItem.addActionListener(actionListener);
+		return menuItem;
 	}
 }
