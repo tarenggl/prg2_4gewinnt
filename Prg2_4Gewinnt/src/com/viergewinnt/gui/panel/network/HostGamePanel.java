@@ -2,21 +2,9 @@ package com.viergewinnt.gui.panel.network;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
-import java.net.SocketException;
-
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-
 import com.viergewinnt.model.HostGameModel;
-import com.viergewinnt.network.NetworkDatagramHelper;
-import com.viergewinnt.network.data.GameHosterData;
 
 public class HostGamePanel extends JPanel {
 

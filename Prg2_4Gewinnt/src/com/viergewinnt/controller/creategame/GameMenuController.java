@@ -39,7 +39,7 @@ public class GameMenuController implements DrawableController {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				gameFrame.SetNewContentPanel(new GameContainer());
+				new PlayComputerGameController(gameFrame).show();
 			}
 		});
 		model.setMenuActions(actions);	

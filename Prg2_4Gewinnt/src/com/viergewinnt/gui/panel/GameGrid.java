@@ -41,6 +41,7 @@ public class GameGrid extends JPanel{
 						break;
 					}
 				}
+				repaint();
 			}
 			
 			@Override

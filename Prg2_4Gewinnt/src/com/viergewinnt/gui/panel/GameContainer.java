@@ -5,6 +5,8 @@ import java.awt.Color;
 
 import javax.swing.JPanel;
 
+import com.viergewinnt.model.PlayGameModel;
+
 
 public class GameContainer extends JPanel {
 	/**
@@ -14,11 +16,11 @@ public class GameContainer extends JPanel {
 	GameHeader header;	
 	GameGrid grid;
 	
-	public GameContainer(){
+	public GameContainer(PlayGameModel model){
 		super();
 		this.setLayout(new BorderLayout());
 		header = new GameHeader();
-		grid = new GameGrid();
+		grid = new GameGrid(model.getGameProperties());
 		this.setBackground(Color.WHITE.brighter());
 		this.initialize();
 		repaint();
