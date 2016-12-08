@@ -19,7 +19,7 @@ public class GameContainer extends JPanel {
 		this.setLayout(new BorderLayout());
 		header = new GameHeader();
 		grid = new GameGrid();
-		this.setBackground(Color.YELLOW.brighter());
+		this.setBackground(Color.WHITE.brighter());
 		this.initialize();
 		repaint();
 	}
