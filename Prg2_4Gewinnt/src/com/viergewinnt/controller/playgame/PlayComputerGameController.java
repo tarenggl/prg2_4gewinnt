@@ -1,4 +1,4 @@
-package com.viergewinnt.controller.creategame;
+package com.viergewinnt.controller.playgame;
 
 import com.viergewinnt.controller.base.DrawableController;
 import com.viergewinnt.controller.base.PlayGameController;

@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.Hashtable;
 
 import com.viergewinnt.controller.base.DrawableController;
+import com.viergewinnt.controller.playgame.PlayComputerGameController;
 import com.viergewinnt.gui.GameFrame;
 import com.viergewinnt.gui.menubar.GameMenuBar;
 import com.viergewinnt.gui.panel.GameContainer;
