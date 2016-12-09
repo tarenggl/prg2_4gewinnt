@@ -36,7 +36,7 @@ public class GameGrid extends JPanel{
 			
 			@Override
 			public void mouseMoved(MouseEvent e) {
-				// TODO Auto-generated method stub
+				
 				for(int i = 1 ;  i <= cols; i++) {
 					if(e.getX() <= (getWidth()/cols)*i) {
 						activeStoneCol = i;

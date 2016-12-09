@@ -13,7 +13,7 @@ public class PlayComputerGameController extends PlayGameController {
 	public PlayComputerGameController(GameFrame gameFrame) {
 		frame = gameFrame;
 		model = new PlayGameModel();
-		model.setGameProperties(new GameProperties(5, 5));
+		model.setGameProperties(new GameProperties(7, 6));
 		view = new GameContainer(model);
 	}
 }
