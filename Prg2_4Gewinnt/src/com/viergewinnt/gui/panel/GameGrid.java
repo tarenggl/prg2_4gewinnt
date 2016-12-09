@@ -132,7 +132,7 @@ public class GameGrid extends JPanel{
 		g2d.setColor(Color.BLUE.brighter());
 		g2d.fill(a);
 		//change color to player color
-		g2d.setColor(Color.YELLOW.brighter());
+		g2d.setColor(game.getActivePlayer().getColor());
 		g2d.fill(activeStone);
 		
 	}

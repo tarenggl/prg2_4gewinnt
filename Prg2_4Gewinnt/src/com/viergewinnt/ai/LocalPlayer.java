@@ -1,23 +1,40 @@
 package com.viergewinnt.ai;
 
 import java.awt.Color;
-import java.util.Random;
 
 import com.viergewinnt.gameobjects.GameProperties;
 import com.viergewinnt.gameobjects.Player;
 
-public class LocalPlayer extends Player {
+public class LocalPlayer extends Player implements Runnable {
 
 	GameProperties gameProperties;
-	
+
 	public LocalPlayer(String name) {
 		super(Color.YELLOW);
 	}
 
 	@Override
 	public int makeTurn() {
-		return new Random().nextInt(gameProperties.getColumns()); 
+		try {
+			Thread td = new Thread(this);
+			td.start();
+			td.join();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		int column = columnSelection;
+		columnSelection = 0;
+		return column;
 	}
-	
-	
+
+	@Override
+	public void run() {
+		while (columnSelection == 0) {
+			try {
+				Thread.sleep(10);
+			} catch (Exception ex) {
+			}
+		}
+	}
+
 }

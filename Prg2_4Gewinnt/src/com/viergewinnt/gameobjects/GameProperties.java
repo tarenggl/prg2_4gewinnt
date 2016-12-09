@@ -3,6 +3,7 @@ package com.viergewinnt.gameobjects;
 import java.awt.Color;
 import java.util.ArrayList;
 
+import com.viergewinnt.ai.ComputerPlayer;
 import com.viergewinnt.ai.StoneMovement;
 
 public class GameProperties {
@@ -19,7 +20,7 @@ public class GameProperties {
 		this.setColumns(columns < 5 ? 5 : columns);
 		this.setRows(rows < 5 ? 5 : rows);
 		stoneList = new ArrayList<>(this.getColumns()*this.getRows());
-		activePlayer = new Player(Color.red);
+		activePlayer = new ComputerPlayer(null);
 	}
 	
 	public ArrayList<Stone> getStoneList(){
@@ -90,6 +91,14 @@ public class GameProperties {
 
 	public void setGridheight(int gridheight) {
 		this.gridheight = gridheight;
+	}
+
+	public Player getActivePlayer() {
+		return activePlayer;
+	}
+	
+	public void setActivePlayer(Player player) {
+		activePlayer = player;
 	}
 	
 }

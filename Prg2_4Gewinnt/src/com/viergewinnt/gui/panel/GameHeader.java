@@ -1,19 +1,17 @@
 package com.viergewinnt.gui.panel;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Observer;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+
+import com.viergewinnt.gameobjects.GameProperties;
 
 public class GameHeader extends JPanel {
 
@@ -26,9 +24,11 @@ public class GameHeader extends JPanel {
 	private Date gameTime;
 	private DateFormat formatter;
 	private long counter;
+	private GameProperties game;
 	
-	public GameHeader() {
+	public GameHeader(GameProperties game) {
 		super();
+		this.game = game;
 		this.setBackground(Color.WHITE.brighter());
 		this.setLayout(new GridLayout(2, 4));
 		timeDesc = new GameHeaderLabel("Time:");

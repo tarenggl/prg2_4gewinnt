@@ -1,20 +1,20 @@
 package com.viergewinnt.controller.playgame.action;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 
 import com.viergewinnt.ai.GridCalculator;
 import com.viergewinnt.gameobjects.GameProperties;
+import com.viergewinnt.gameobjects.Player;
 
 public class AddStoneAction implements MouseListener{
 
 	private GameProperties game;
+	private Player localPlayer;
 	
-	public AddStoneAction(GameProperties game) {
+	public AddStoneAction(GameProperties game, Player localPlayer) {
 		this.game = game;
+		this.localPlayer = localPlayer;
 	}
 
 	@Override
@@ -43,8 +43,7 @@ public class AddStoneAction implements MouseListener{
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		game.addStone(GridCalculator.getActiveColumn(game, e.getX()));
+		if(game.getActivePlayer().equals(localPlayer))
+			localPlayer.makeColSelection(GridCalculator.getActiveColumn(game, e.getX()));
 	}
-
-	
 }

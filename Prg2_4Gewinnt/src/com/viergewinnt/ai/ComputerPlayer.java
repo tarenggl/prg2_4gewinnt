@@ -12,10 +12,17 @@ public class ComputerPlayer extends Player {
 	
 	public ComputerPlayer(GameProperties gameProperties) {
 		super(Color.RED);
+		this.gameProperties = gameProperties;
 	}
 
 	@Override
 	public int makeTurn() {
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return new Random().nextInt(gameProperties.getColumns()); 
 	}
 	

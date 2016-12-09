@@ -1,36 +1,45 @@
 package com.viergewinnt.ai;
 
-import java.awt.Color;
-import java.util.ArrayList;
 import com.viergewinnt.gameobjects.GameProperties;
 import com.viergewinnt.gameobjects.Player;
 import com.viergewinnt.gameobjects.Stone;
 
-public class Controller {
-	private ArrayList<Stone> stoneList;
+public class GameController implements Runnable{
 	private Player player1;
 	private Player player2;
 	private GameProperties game;
 	private Stone winner;
 	
-	public Controller(int columns) {
-		//GamePanel parameter is missing
-		player1 = new LocalPlayer("Text");
-		player2 = new LocalPlayer("tt");
-		game = new GameProperties(columns, game.getRows());
-		this.stoneList = game.getStoneList();
+	public GameController(GameProperties properties, Player player, Player oponent) {
+		player1 = player;
+		player2 = oponent;
+		game = properties;
 		winner = null;
 	}
 	
-	public void startGame() {
-		
+	@Override
+	public void run() {
+		game.setActivePlayer(player1);
 		while(!gameFinished()) {
-			
+			int column = game.getActivePlayer().makeTurn();
+			try {
+				game.addStone(column);
+				switchPlayer();
+			} catch(Exception ex) {
+				
+			}
 		}
 	}
 	
+	private void switchPlayer() {
+		if(game.getActivePlayer() == player1)
+			game.setActivePlayer(player2);
+		else
+			game.setActivePlayer(player1);
+	}
+	
 	public boolean gameFinished() {
-		for(Stone s : stoneList) {
+		for(Stone s : game.getStoneList()) {
 			if(verticalWin(s) || horizontalWin(s) || diagonalLeftWin(s) || diagonalRightWin(s)) {
 				winner = s;
 				return true;
