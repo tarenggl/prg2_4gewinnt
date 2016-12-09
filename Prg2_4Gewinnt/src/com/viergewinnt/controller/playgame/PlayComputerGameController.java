@@ -16,7 +16,7 @@ public class PlayComputerGameController extends PlayGameController implements Dr
 	public PlayComputerGameController(GameFrame gameFrame) {
 		frame = gameFrame;
 		model = new PlayGameModel();
-		model.setGameProperties(new GameProperties(5, 5));
+		model.setGameProperties(new GameProperties(7, 6));
 		view = new GameContainer(model);
 	}
 	
