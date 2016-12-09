@@ -1,4 +1,4 @@
-package com.viergewinnt.controller.creategame;
+package com.viergewinnt.controller.playgame;
 
 import com.viergewinnt.controller.base.DrawableController;
 import com.viergewinnt.controller.base.PlayGameController;
@@ -7,21 +7,13 @@ import com.viergewinnt.gui.GameFrame;
 import com.viergewinnt.gui.panel.GameContainer;
 import com.viergewinnt.model.PlayGameModel;
 
-public class PlayComputerGameController extends PlayGameController implements DrawableController{
+public class PlayComputerGameController extends PlayGameController {
 
-	private GameFrame frame;
-	private GameContainer view;
-	private PlayGameModel model;
 
 	public PlayComputerGameController(GameFrame gameFrame) {
 		frame = gameFrame;
 		model = new PlayGameModel();
-		model.setGameProperties(new GameProperties(5, 5));
+		model.setGameProperties(new GameProperties(7, 6));
 		view = new GameContainer(model);
 	}
-	
-	public void show() {
-		frame.SetNewContentPanel(view);
-	}
-	
 }

@@ -7,6 +7,8 @@ public class GameProperties {
 	private int columns;
 	private int rows;
 	private ArrayList<Stone> stoneList;
+	private int gridwidth;
+	private Player activePlayer;
 	
 	
 	public GameProperties(int columns, int rows) {
@@ -30,6 +32,10 @@ public class GameProperties {
 		
 		return null;
 	}
+	
+	public void addStone(int column, int row) {
+		stoneList.add(new Stone(activePlayer, activePlayer.getColor(), column, row));
+	}
 
 	public int getColumns() {
 		return columns;
@@ -45,6 +51,14 @@ public class GameProperties {
 
 	public void setRows(int rows) {
 		this.rows = rows;
+	}
+
+	public int getGridwidth() {
+		return gridwidth;
+	}
+
+	public void setGridwidth(int gridwidth) {
+		this.gridwidth = gridwidth;
 	}
 	
 }

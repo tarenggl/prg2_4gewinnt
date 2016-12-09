@@ -18,7 +18,7 @@ public class JoinNetworkGame implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		new ChooseGamePropertyDialog(null);
+		new ChooseGamePropertyDialog(null, null);
 	}
 
 	public GameHosterData getSelectedServer() {
