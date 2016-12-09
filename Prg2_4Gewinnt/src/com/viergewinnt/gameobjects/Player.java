@@ -10,4 +10,8 @@ public abstract class Player {
 	}
 	
 	public abstract int makeTurn();
+
+	public Color getColor() {
+		return color;
+	}
 }
