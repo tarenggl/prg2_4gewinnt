@@ -14,11 +14,11 @@ public class Controller {
 	private GameProperties game;
 	private Stone winner;
 	
-	public Controller(int columns, int rows) {
+	public Controller(int columns) {
 		//GamePanel parameter is missing
 		player1 = new Player(Color.RED);
 		player2 = new Player(Color.YELLOW);
-		game = new GameProperties(columns, rows);
+		game = new GameProperties(columns, game.getRows());
 		this.stoneList = game.getStoneList();
 		winner = null;
 	}

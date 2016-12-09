@@ -1,6 +1,9 @@
 package com.viergewinnt.gameobjects;
 
+import java.awt.Color;
 import java.util.ArrayList;
+
+import com.viergewinnt.ai.StoneMovement;
 
 public class GameProperties {
 	
@@ -8,6 +11,7 @@ public class GameProperties {
 	private int rows;
 	private ArrayList<Stone> stoneList;
 	private int gridwidth;
+	private int gridheight;
 	private Player activePlayer;
 	
 	
@@ -15,6 +19,7 @@ public class GameProperties {
 		this.setColumns(columns < 5 ? 5 : columns);
 		this.setRows(rows < 5 ? 5 : rows);
 		stoneList = new ArrayList<>(this.getColumns()*this.getRows());
+		activePlayer = new Player(Color.red);
 	}
 	
 	public ArrayList<Stone> getStoneList(){
@@ -33,8 +38,26 @@ public class GameProperties {
 		return null;
 	}
 	
-	public void addStone(int column, int row) {
-		stoneList.add(new Stone(activePlayer, activePlayer.getColor(), column, row));
+	public void addStone(int column) throws ArrayIndexOutOfBoundsException {
+		if(columnIsFull(column)) {
+			throw new ArrayIndexOutOfBoundsException();
+		}
+		Stone s = new Stone(activePlayer, activePlayer.getColor(), column, getFreeRow(column));
+		StoneMovement move = new StoneMovement(s, this);
+		move.start();
+		stoneList.add(s);
+	}
+	
+	private boolean columnIsFull(int col) {
+		return (getFreeRow(col) > rows);
+	}
+	
+	private int getFreeRow(int col) {
+		int currentRow = 1;
+		for(Stone s : stoneList) {
+			currentRow = s.getColumn() == col ? ++currentRow : currentRow;
+		}
+		return currentRow;
 	}
 
 	public int getColumns() {
@@ -59,6 +82,14 @@ public class GameProperties {
 
 	public void setGridwidth(int gridwidth) {
 		this.gridwidth = gridwidth;
+	}
+
+	public int getGridheight() {
+		return gridheight;
+	}
+
+	public void setGridheight(int gridheight) {
+		this.gridheight = gridheight;
 	}
 	
 }

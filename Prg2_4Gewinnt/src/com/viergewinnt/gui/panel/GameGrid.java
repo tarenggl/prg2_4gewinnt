@@ -13,7 +13,9 @@ import java.awt.geom.Ellipse2D;
 
 import javax.swing.JPanel;
 
+import com.viergewinnt.ai.GridCalculator;
 import com.viergewinnt.gameobjects.GameProperties;
+import com.viergewinnt.gameobjects.Stone;
 
 public class GameGrid extends JPanel{
 
@@ -60,7 +62,8 @@ public class GameGrid extends JPanel{
 			
 			@Override
 			public void componentResized(ComponentEvent e) {
-				game.setGridwidth(getWidth());			
+				game.setGridwidth(getWidth());
+				game.setGridheight(getHeight());
 			}
 			
 			@Override
@@ -81,6 +84,17 @@ public class GameGrid extends JPanel{
 	public void paint(Graphics g) {
 		super.paint(g);
 		Graphics2D g2d = (Graphics2D) g;
+		for(Stone s : game.getStoneList()) {
+			if (!s.isActive()) {
+				Ellipse2D stone = new Ellipse2D.Double(((getWidth()/cols)*s.getColumn() - (getWidth()/cols)*3/4), ((getHeight()/(rows+1))*(rows - s.getRow() + 1) - (getHeight()/(rows+1))*3/4) + getHeight()/(rows+1), (getWidth()/cols)/1.5, (getHeight()/(rows+1))/1.5);
+				g2d.setColor(s.getColor());
+				g2d.fill(stone);
+			}else {
+				s.paint(g, s.getRelativeX(),s.getRelativeY(),(getWidth()/cols)/1.5, (getHeight()/(rows+1))/1.5);
+			}
+			
+		}
+		
 		Area a = new Area(new Rectangle(0, getHeight()/(rows+1), getWidth(), (getHeight()/(rows+1))*rows));
 		for(int r = 1 ; r <= rows ; r++) {
 			for ( int c = 1 ; c <= cols ; c++) {

@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import com.viergewinnt.model.PlayGameModel;
 
 
-public class GameContainer extends JPanel {
+public class GameContainer extends JPanel implements Runnable{
 	/**
 	 * 
 	 */
@@ -21,13 +21,31 @@ public class GameContainer extends JPanel {
 		this.setLayout(new BorderLayout());
 		header = new GameHeader();
 		grid = new GameGrid(model.getGameProperties());
+		grid.addMouseListener(model.getStonepressed());
 		this.setBackground(Color.WHITE.brighter());
-		this.initialize();
-		repaint();
+		this.initialize();		
+	}
+	
+	public void start() {
+		Thread thrd = new Thread(this);
+		thrd.start();
 	}
 	
 	public void initialize() {
 		add(header, BorderLayout.NORTH);
 		add(grid, BorderLayout.CENTER);
+	}
+
+	@Override
+	public void run() {
+		while(true) {
+			grid.repaint();
+			try {
+				Thread.sleep(10);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 }
