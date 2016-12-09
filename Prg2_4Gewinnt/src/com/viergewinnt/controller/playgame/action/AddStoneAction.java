@@ -43,7 +43,6 @@ public class AddStoneAction implements MouseListener{
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		if(game.getActivePlayer().equals(localPlayer))
-			localPlayer.makeColSelection(GridCalculator.getActiveColumn(game, e.getX()));
+		localPlayer.makeColSelection(GridCalculator.getActiveColumn(game, e.getX()));
 	}
 }

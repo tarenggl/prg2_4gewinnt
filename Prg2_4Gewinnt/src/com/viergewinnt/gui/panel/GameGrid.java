@@ -10,6 +10,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.awt.geom.Area;
 import java.awt.geom.Ellipse2D;
+import java.util.Iterator;
 
 import javax.swing.JPanel;
 
@@ -110,7 +111,9 @@ public class GameGrid extends JPanel{
 	public void paint(Graphics g) {
 		super.paint(g);
 		Graphics2D g2d = (Graphics2D) g;
-		for(Stone s : game.getStoneList()) {
+		Iterator<Stone> iterator = game.getStoneList().iterator();
+		while(iterator.hasNext()) {
+		Stone s = iterator.next();
 			if (!s.isActive()) {
 				Ellipse2D stone = new Ellipse2D.Double(((getWidth()/cols)*s.getColumn() - (getWidth()/cols)*3/4), ((getHeight()/(rows+1))*(rows - s.getRow() + 1) - (getHeight()/(rows+1))*3/4) + getHeight()/(rows+1), (getWidth()/cols)/1.5, (getHeight()/(rows+1))/1.5);
 				g2d.setColor(s.getColor());
