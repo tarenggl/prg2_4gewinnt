@@ -2,7 +2,6 @@ package com.viergewinnt.ai;
 
 import java.awt.Color;
 import java.util.ArrayList;
-
 import com.viergewinnt.gameobjects.GameProperties;
 import com.viergewinnt.gameobjects.Player;
 import com.viergewinnt.gameobjects.Stone;
@@ -16,8 +15,8 @@ public class Controller {
 	
 	public Controller(int columns, int rows) {
 		//GamePanel parameter is missing
-		player1 = new Player(Color.RED);
-		player2 = new Player(Color.YELLOW);
+		player1 = new LocalPlayer("Text");
+		player2 = new LocalPlayer("tt");
 		game = new GameProperties(columns, rows);
 		this.stoneList = game.getStoneList();
 		winner = null;
