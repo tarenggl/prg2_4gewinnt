@@ -39,23 +39,16 @@ public class ChooseFileDialog extends JFrame
                  switch (fileChooser.showOpenDialog(ChooseFileDialog.this))
                  {
                     case JFileChooser.APPROVE_OPTION:
-                       JOptionPane.showMessageDialog(ChooseFileDialog.this, "Selected: " +
-                                                     fileChooser.getSelectedFile(),
-                                                     "ChooseFileDialog",
-                                                     JOptionPane.OK_OPTION);
+                       //JOptionPane.showMessageDialog(ChooseFileDialog.this, "Selected: " + fileChooser.getSelectedFile(), "ChooseFileDialog", JOptionPane.OK_OPTION);
                        importGameFromFile();
                        break;
 
                     case JFileChooser.CANCEL_OPTION:
-                       JOptionPane.showMessageDialog(ChooseFileDialog.this, "Cancelled",
-                                                     "ChooseFileDialog",
-                                                     JOptionPane.OK_OPTION);
+                       JOptionPane.showMessageDialog(ChooseFileDialog.this, "Cancelled", "ChooseFileDialog", JOptionPane.OK_OPTION);
                        break;
                  
                     case JFileChooser.ERROR_OPTION:
-                       JOptionPane.showMessageDialog(ChooseFileDialog.this, "Error",
-                                                     "ChooseFileDialog",
-                                                     JOptionPane.OK_OPTION);
+                       JOptionPane.showMessageDialog(ChooseFileDialog.this, "Error", "ChooseFileDialog", JOptionPane.OK_OPTION);
                  }
               }
            };
@@ -71,23 +64,16 @@ public class ChooseFileDialog extends JFrame
                  switch (fileChooser.showSaveDialog(ChooseFileDialog.this))
                  {
                     case JFileChooser.APPROVE_OPTION:
-                       JOptionPane.showMessageDialog(ChooseFileDialog.this, "Selected: " +
-                                                     fileChooser.getSelectedFile(),
-                                                     "ChooseFileDialog",
-                                                     JOptionPane.OK_OPTION);
+                       //JOptionPane.showMessageDialog(ChooseFileDialog.this, "Selected: " + fileChooser.getSelectedFile(), "ChooseFileDialog", JOptionPane.OK_OPTION);
                        exportGameToFile(fileChooser.getSelectedFile());
                        break;
 
                     case JFileChooser.CANCEL_OPTION:
-                       JOptionPane.showMessageDialog(ChooseFileDialog.this, "Cancelled",
-                                                     "ChooseFileDialog",
-                                                     JOptionPane.OK_OPTION);
+                       JOptionPane.showMessageDialog(ChooseFileDialog.this, "Cancelled", "ChooseFileDialog", JOptionPane.OK_OPTION);
                        break;
                  
                     case JFileChooser.ERROR_OPTION:
-                       JOptionPane.showMessageDialog(ChooseFileDialog.this, "Error",
-                                                     "ChooseFileDialog",
-                                                     JOptionPane.OK_OPTION);
+                       JOptionPane.showMessageDialog(ChooseFileDialog.this, "Error", "ChooseFileDialog", JOptionPane.OK_OPTION);
                  }
               }
            };
@@ -125,7 +111,7 @@ public class ChooseFileDialog extends JFrame
 	}
  	
  	
- 	/*Temporäre Main-Methode für Tests
+ 	/*Temporäre Main-Methode für Tests*/
  	public static void main(String[] args)
     {
        Runnable r = new Runnable()
@@ -137,6 +123,6 @@ public class ChooseFileDialog extends JFrame
                        }
                     };
        EventQueue.invokeLater(r);
-    }*/
+    }
  
 }
