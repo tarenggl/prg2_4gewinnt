@@ -111,17 +111,15 @@ public class GameGrid extends JPanel{
 	public void paint(Graphics g) {
 		super.paint(g);
 		Graphics2D g2d = (Graphics2D) g;
-		Iterator<Stone> iterator = game.getStoneList().iterator();
-		while(iterator.hasNext()) {
-		Stone s = iterator.next();
+		for(int i = 0; i < game.getStoneList().size(); i++) {
+			Stone s = game.getStoneList().get(i);
 			if (!s.isActive()) {
 				Ellipse2D stone = new Ellipse2D.Double(((getWidth()/cols)*s.getColumn() - (getWidth()/cols)*3/4), ((getHeight()/(rows+1))*(rows - s.getRow() + 1) - (getHeight()/(rows+1))*3/4) + getHeight()/(rows+1), (getWidth()/cols)/1.5, (getHeight()/(rows+1))/1.5);
 				g2d.setColor(s.getColor());
 				g2d.fill(stone);
-			}else {
+			} else {
 				s.paint(g, s.getRelativeX(),s.getRelativeY(),(getWidth()/cols)/1.5, (getHeight()/(rows+1))/1.5);
-			}
-			
+			}		
 		}
 		
 		Area a = new Area(new Rectangle(0, getHeight()/(rows+1), getWidth(), (getHeight()/(rows+1))*rows));
