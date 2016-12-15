@@ -1,16 +1,11 @@
 package com.viergewinnt.controller.playgame;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import com.viergewinnt.ai.ComputerPlayer;
-import com.viergewinnt.ai.GameController;
 import com.viergewinnt.ai.LocalPlayer;
 import com.viergewinnt.ai.NetworkPlayer;
 import com.viergewinnt.controller.base.DrawableController;
@@ -27,7 +22,7 @@ public class PlayNetworkGameController extends PlayGameController implements Dra
 	private GameHosterData gameHoster;
 
 	public PlayNetworkGameController(GameFrame gameFrame, GameHosterData gameHoster) {
-		frame = gameFrame;
+		super(gameFrame);
 		this.gameHoster = gameHoster;
 	}
 	

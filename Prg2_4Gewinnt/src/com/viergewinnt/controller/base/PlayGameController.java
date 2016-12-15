@@ -6,6 +6,7 @@ import com.viergewinnt.ai.ComputerPlayer;
 import com.viergewinnt.ai.GameController;
 import com.viergewinnt.ai.LocalPlayer;
 import com.viergewinnt.controller.playgame.action.AddStoneAction;
+import com.viergewinnt.gameobjects.GameProperties;
 import com.viergewinnt.gameobjects.Player;
 import com.viergewinnt.gui.GameFrame;
 import com.viergewinnt.gui.dialog.ChooseGamePropertyDialog;
@@ -21,8 +22,11 @@ public abstract class PlayGameController implements DrawableController, Runnable
 	private GameFinishedDialog finished;
 	private GameController game;
 	
-	public PlayGameController() {
+	public PlayGameController(GameFrame frame) {
+		this.frame = frame;
 		model = new PlayGameModel();
+		model.setGameProperties(new GameProperties(7, 6));
+		view = new GameContainer(model);
 	}
 	
 	protected void startGame(Player player1, Player player2) {		
