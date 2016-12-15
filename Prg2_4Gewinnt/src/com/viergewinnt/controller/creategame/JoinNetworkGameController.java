@@ -18,7 +18,7 @@ public class JoinNetworkGameController implements DrawableController {
 	
 	public JoinNetworkGameController(GameFrame mainGameFrame) {
 		this.mainGameFrame = mainGameFrame;	
-		model = new JoinNetworkGameModel();
+		model = new JoinNetworkGameModel(this.mainGameFrame);
 		model.setHosterList(new JList<>(model.getHoster()));
 		model.setSearchGameHoster(new SearchNetworkHoster(model.getHoster()));		
 		model.setJoinNetworkGame(new JoinNetworkGameAction(model.getHosterList(), new PlayNetworkGameController(mainGameFrame, null)));

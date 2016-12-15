@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JPanel;
@@ -33,6 +34,7 @@ public class JoinGamePanel extends JPanel{
 	JList<GameHosterData> serverList;
 	JButton selectHoster;
 	JoinNetworkGameAction networkGame;
+	JoinGameNameDialog playerName;
 	
 	public JoinGamePanel(JoinNetworkGameModel model) {
 		initPanelSettings();
@@ -41,6 +43,8 @@ public class JoinGamePanel extends JPanel{
 		initServerList();
 		initSelectHoster(model.getJoinNetworkGame());
 		networkGame = model.getJoinNetworkGame();
+		playerName = new JoinGameNameDialog(model.getMainFrame());
+		playerName.setVisible(true);
 	}
 	
 	private void initServerList() {
