@@ -1,12 +1,12 @@
 package com.viergewinnt.gameobjects;
 
-import java.awt.Color;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import com.viergewinnt.ai.ComputerPlayer;
 import com.viergewinnt.ai.StoneMovement;
 
-public class GameProperties {
+public class GameProperties implements Serializable {
 	
 	private int columns;
 	private int rows;
