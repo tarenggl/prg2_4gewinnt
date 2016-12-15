@@ -12,6 +12,7 @@ public abstract class Player {
 		this.color = color;
 		columnSelection = 0;
 		this.name = name;
+		name = "";
 	}
 	
 	public abstract int makeTurn();

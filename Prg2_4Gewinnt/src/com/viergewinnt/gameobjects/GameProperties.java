@@ -40,7 +40,7 @@ public class GameProperties {
 	}
 	
 	public void addStone(int column) throws ArrayIndexOutOfBoundsException {
-		if(columnIsFull(column)) {
+		if(columnIsFull(column) || !columnIsValid(column)) {
 			throw new ArrayIndexOutOfBoundsException();
 		}
 		Stone s = new Stone(activePlayer, activePlayer.getColor(), column, getFreeRow(column));
@@ -49,6 +49,10 @@ public class GameProperties {
 		stoneList.add(s);
 	}
 	
+	private boolean columnIsValid(int column) {
+		return !(column < 1 || column > columns);
+	}
+
 	private boolean columnIsFull(int col) {
 		return (getFreeRow(col) > rows);
 	}

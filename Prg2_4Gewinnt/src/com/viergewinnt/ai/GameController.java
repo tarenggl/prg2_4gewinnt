@@ -3,6 +3,7 @@ package com.viergewinnt.ai;
 import com.viergewinnt.gameobjects.GameProperties;
 import com.viergewinnt.gameobjects.Player;
 import com.viergewinnt.gameobjects.Stone;
+import com.viergewinnt.gui.dialog.GameFinishedDialog;
 
 public class GameController implements Runnable{
 	private Player player1;
@@ -14,22 +15,24 @@ public class GameController implements Runnable{
 		player1 = player;
 		player2 = oponent;
 		game = properties;
-		winner = null;
+		setWinner(null);
 	}
 	
 	@Override
 	public void run() {
 		game.setActivePlayer(player1);
 		while(!gameFinished()) {
-			int column = game.getActivePlayer().makeTurn();
 			try {
-				game.addStone(column);
+				int column = game.getActivePlayer().makeTurn();
+				game.addStone(column);			
 				switchPlayer();
 			} catch(Exception ex) {
-				
-			}
+				ex.printStackTrace();
+			}	
 		}
+		
 	}
+	
 	
 	private void switchPlayer() {
 		if(game.getActivePlayer() == player1)
@@ -41,7 +44,7 @@ public class GameController implements Runnable{
 	public boolean gameFinished() {
 		for(Stone s : game.getStoneList()) {
 			if(verticalWin(s) || horizontalWin(s) || diagonalLeftWin(s) || diagonalRightWin(s)) {
-				winner = s;
+				setWinner(s);
 				return true;
 			}
 		}
@@ -107,5 +110,13 @@ public class GameController implements Runnable{
 	
 	public void play(){
 		
+	}
+
+	public Stone getWinner() {
+		return winner;
+	}
+
+	public void setWinner(Stone winner) {
+		this.winner = winner;
 	}
 }

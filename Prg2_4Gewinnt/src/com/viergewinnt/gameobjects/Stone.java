@@ -19,7 +19,7 @@ public class Stone{
 	private int relativeY;
 	
 	public Stone(Player player, Color color, int column, int row) {
-		this.player = player;
+		this.setPlayer(player);
 		this.setColor(color);
 		this.setColumn(column);
 		this.setRow(row);
@@ -79,6 +79,14 @@ public class Stone{
 
 	public void setActive(boolean active) {
 		this.active = active;
+	}
+
+	public Player getPlayer() {
+		return player;
+	}
+
+	public void setPlayer(Player player) {
+		this.player = player;
 	}
 
 
