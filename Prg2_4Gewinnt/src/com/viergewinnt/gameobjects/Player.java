@@ -1,8 +1,13 @@
 package com.viergewinnt.gameobjects;
 
 import java.awt.Color;
+import java.io.Serializable;
 
-public abstract class Player {
+public abstract class Player implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Color color;
 	protected int columnSelection;
 	private String name;

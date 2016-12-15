@@ -5,17 +5,20 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
 import com.viergewinnt.ai.ComputerPlayer;
 import com.viergewinnt.ai.GameController;
+import com.viergewinnt.ai.LocalPlayer;
 import com.viergewinnt.ai.NetworkPlayer;
 import com.viergewinnt.controller.base.DrawableController;
 import com.viergewinnt.controller.base.PlayGameController;
 import com.viergewinnt.gameobjects.GameProperties;
 import com.viergewinnt.gameobjects.Player;
 import com.viergewinnt.gui.GameFrame;
+import com.viergewinnt.gui.dialog.ChooseGamePropertyDialog;
 import com.viergewinnt.network.data.GameHosterData;
 
 public class PlayNetworkGameController extends PlayGameController implements DrawableController{
@@ -38,20 +41,25 @@ public class PlayNetworkGameController extends PlayGameController implements Dra
 	}
 	
 	public void start() {
-		
-//		ServerSocket serverSocket = new ServerSocket(12344);
-		
-//		try {
-//			Socket client = serverSocket.accept();
-//			ObjectInputStream clientObjectInput = new ObjectInputStream(new BufferedInputStream(new InputStreamReader(client.getInputStream())));
-//			Player clientPlayer = (Player)clientObjectInput.readObject();
-//			NetworkPlayer networkPlayer = new NetworkPlayer(model.getGameProperties(), clientPlayer.getName(), client, serverSocket);
-//			GameController game = new GameController(model.getGameProperties(), model., oponent)
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-		
+		try {
+			ServerSocket serverSocket = new ServerSocket(12344);
+			Socket client = serverSocket.accept();
+			ObjectInputStream clientObjectInput = new ObjectInputStream(client.getInputStream());
+			Player clientPlayer = (Player)clientObjectInput.readObject();
+			ChooseGamePropertyDialog dialog = new ChooseGamePropertyDialog(model.getGameProperties(), frame);
+			dialog.setVisible(true);
+			Player localPlayer = new LocalPlayer(dialog.getName());
+			ObjectOutputStream outputClient = new ObjectOutputStream(client.getOutputStream());
+			outputClient.writeObject(model.getGameProperties());
+			outputClient.flush();
+			outputClient.writeObject(localPlayer);
+			outputClient.flush();
+			NetworkPlayer networkPlayer = new NetworkPlayer(model.getGameProperties(), clientPlayer.getName(), client);
+			startGame(localPlayer, networkPlayer);
+		} catch (IOException | ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	
