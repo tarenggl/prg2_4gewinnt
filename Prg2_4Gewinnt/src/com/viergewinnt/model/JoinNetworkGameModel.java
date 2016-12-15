@@ -16,11 +16,9 @@ public class JoinNetworkGameModel {
 	private JoinNetworkGameAction joinNetworkGame;
 	private DefaultListModel<GameHosterData> hosterData;
 	private JList<GameHosterData> hosterList;
-	private GameFrame frame;
 	
-	public JoinNetworkGameModel(GameFrame owner) {
+	public JoinNetworkGameModel() {
 		hosterData = new DefaultListModel<>();
-		frame = owner;
 	}
 	
 	public ActionListener getSearchGameHoster() {
@@ -51,7 +49,4 @@ public class JoinNetworkGameModel {
 		this.hosterList = hosterList;
 	}	
 	
-	public JFrame getMainFrame(){
-		return frame;
-	}
 }
