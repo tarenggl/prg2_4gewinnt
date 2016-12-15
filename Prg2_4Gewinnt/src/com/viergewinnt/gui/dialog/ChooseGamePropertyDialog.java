@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -14,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import com.viergewinnt.controller.playgame.action.AddStoneAction;
 import com.viergewinnt.gameobjects.GameProperties;
 import com.viergewinnt.gui.panel.GameHeaderLabel;
 
@@ -38,7 +41,8 @@ public class ChooseGamePropertyDialog extends JDialog {
 	private final int minRows = 5;
 	private final int maxCols = 12;
 	private final int minCols = 5;
-
+	private KeyListener l;
+	
 	public ChooseGamePropertyDialog(GameProperties properties, JFrame owner) {
 		super(owner, ModalityType.APPLICATION_MODAL);
 		this.properties = properties;
@@ -54,14 +58,40 @@ public class ChooseGamePropertyDialog extends JDialog {
 		southPanel = new JPanel();
 		southPanel.setLayout(new BorderLayout());
 		add(southPanel, BorderLayout.SOUTH);
+		initializeKeyListener();
 		initializeOptions();
 		initializeButtons();
+	}
+	
+	public void initializeKeyListener(){
+		l = new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode() == KeyEvent.VK_ENTER){
+					bOk.doClick();
+				}
+			}
+		};
 	}
 
 	public void initializeOptions() {
 		addLabel("Spielername");
 		playerName = new JTextField();
 		playerName.setFont(f);
+		playerName.addKeyListener(l);
 		centerPanel.add(playerName);
 		addLabel("rows");
 		cRows = new JComboBox<>();
@@ -79,6 +109,7 @@ public class ChooseGamePropertyDialog extends JDialog {
 		}
 		box.setFont(f);
 		box.setSelectedItem(selected);
+		box.addKeyListener(l);
 	}
 
 	public void initializeButtons() {
