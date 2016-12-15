@@ -21,13 +21,14 @@ public class GameController implements Runnable{
 	public void run() {
 		game.setActivePlayer(player1);
 		while(!gameFinished()) {
-			int column = game.getActivePlayer().makeTurn();
 			try {
-				game.addStone(column);
+				int column = game.getActivePlayer().makeTurn();
+				game.addStone(column);			
 				switchPlayer();
 			} catch(Exception ex) {
-				
+				ex.printStackTrace();
 			}
+			
 		}
 	}
 	

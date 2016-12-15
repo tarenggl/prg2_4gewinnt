@@ -23,7 +23,7 @@ public class ComputerPlayer extends Player {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return new Random().nextInt(gameProperties.getColumns()); 
+		return new Random().nextInt(gameProperties.getColumns())+1; 
 	}
 	
 	
