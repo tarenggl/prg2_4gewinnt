@@ -19,7 +19,7 @@ public class GameContainer extends JPanel implements Runnable{
 	public GameContainer(PlayGameModel model){
 		super();
 		this.setLayout(new BorderLayout());
-		header = new GameHeader(model.getGameController());
+		header = new GameHeader();
 		grid = new GameGrid(model.getGameProperties());
 		grid.addMouseListener(model.getStonepressed());
 		this.setBackground(Color.WHITE.brighter());
