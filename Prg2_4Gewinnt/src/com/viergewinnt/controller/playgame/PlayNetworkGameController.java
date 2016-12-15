@@ -18,7 +18,6 @@ import com.viergewinnt.network.data.GameHosterData;
 
 public class PlayNetworkGameController extends PlayGameController implements DrawableController{
 
-	private GameFrame frame;
 	private GameHosterData gameHoster;
 
 	public PlayNetworkGameController(GameFrame gameFrame, GameHosterData gameHoster) {
