@@ -5,20 +5,24 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JList;
 
+import com.viergewinnt.controller.playgame.PlayNetworkGameController;
 import com.viergewinnt.gui.dialog.ChooseGamePropertyDialog;
 import com.viergewinnt.network.data.GameHosterData;
 
-public class JoinNetworkGame implements ActionListener {
+public class JoinNetworkGameAction implements ActionListener {
 	
 	private JList<GameHosterData> hosterList;
+	private PlayNetworkGameController playNetworkGame;
 	
-	public JoinNetworkGame(JList<GameHosterData> gameHoster) {
+	public JoinNetworkGameAction(JList<GameHosterData> gameHoster, PlayNetworkGameController playNetworkGame) {
 		hosterList = gameHoster;
+		this.playNetworkGame = playNetworkGame;
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		new ChooseGamePropertyDialog(null, null);
+		playNetworkGame.setGameHoster(hosterList.getSelectedValue());
+		playNetworkGame.show();
 	}
 
 	public GameHosterData getSelectedServer() {

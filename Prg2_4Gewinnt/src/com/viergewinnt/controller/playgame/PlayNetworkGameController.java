@@ -31,16 +31,19 @@ public class PlayNetworkGameController extends PlayGameController implements Dra
 		this.gameHoster = gameHoster;
 	}
 	
-	public void show() {
-		
-//		GameController game = new GameController(model.getGameProperties(), localPlayer, new ComputerPlayer(model.getGameProperties()));
-//		model.setGameController(game);
-//		view.start();
-//		Thread td = new Thread(game);
-//		td.start();
+	public void setGameHoster(GameHosterData gameHosterData) {
+		this.gameHoster = gameHosterData;
 	}
 	
-	public void start() {
+	public void show() {
+		if(gameHoster == null) {
+			startServer();
+		} else {
+			startClient();
+		}
+	}
+	
+	public void startServer() {
 		try {
 			ServerSocket serverSocket = new ServerSocket(12344);
 			Socket client = serverSocket.accept();
@@ -56,6 +59,25 @@ public class PlayNetworkGameController extends PlayGameController implements Dra
 			outputClient.flush();
 			NetworkPlayer networkPlayer = new NetworkPlayer(model.getGameProperties(), clientPlayer.getName(), client);
 			startGame(localPlayer, networkPlayer);
+		} catch (IOException | ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void startClient() {
+		try {
+			Socket client = new Socket(gameHoster.getHostAddress(), gameHoster.getGamePort());
+			ObjectOutputStream outputClient = new ObjectOutputStream(client.getOutputStream());
+			ObjectInputStream clientObjectInput = new ObjectInputStream(client.getInputStream());
+			Player localPlayer = new LocalPlayer("Client");
+			outputClient.writeObject(localPlayer);
+			outputClient.flush();
+			GameProperties hostGameProperties = (GameProperties)clientObjectInput.readObject();
+			model.setGameProperties(hostGameProperties);			
+			Player hostPlayer = (Player)clientObjectInput.readObject();
+			NetworkPlayer networkPlayer = new NetworkPlayer(model.getGameProperties(), hostPlayer.getName(), client);
+			startGame(networkPlayer, localPlayer);
 		} catch (IOException | ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
