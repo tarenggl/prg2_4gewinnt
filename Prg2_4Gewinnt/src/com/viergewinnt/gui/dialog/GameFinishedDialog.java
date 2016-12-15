@@ -17,6 +17,8 @@ public class GameFinishedDialog extends JDialog {
 		setSize(owner.getWidth() / 2, owner.getHeight() / 2);
 		JLabel label = new JLabel(winner + " hat gewonnen.");
 		add(label);
+		setVisible(true);
+		
 		
 	}
 

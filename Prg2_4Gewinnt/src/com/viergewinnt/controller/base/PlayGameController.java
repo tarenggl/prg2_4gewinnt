@@ -13,12 +13,13 @@ import com.viergewinnt.gui.dialog.GameFinishedDialog;
 import com.viergewinnt.gui.panel.GameContainer;
 import com.viergewinnt.model.PlayGameModel;
 
-public abstract class PlayGameController implements DrawableController {
+public abstract class PlayGameController implements DrawableController, Runnable {
 
 	protected GameContainer view;
 	protected GameFrame frame;
 	protected PlayGameModel model;
 	private GameFinishedDialog finished;
+	private GameController game;
 	
 	public void show() {
 		ChooseGamePropertyDialog dialog = new ChooseGamePropertyDialog(model.getGameProperties(), frame);
@@ -27,25 +28,35 @@ public abstract class PlayGameController implements DrawableController {
 		model.setStonepressed(new AddStoneAction(model.getGameProperties(), localPlayer));
 		view= new GameContainer(model);
 		frame.SetNewContentPanel(view);
-		GameController game = new GameController(model.getGameProperties(), localPlayer, new ComputerPlayer(model.getGameProperties()));
+		game = new GameController(model.getGameProperties(), localPlayer, new ComputerPlayer(model.getGameProperties()));
 		model.setGameController(game);
 		view.start();
-		startGame(game);
+		startGame();
 	}
 	
-	public void startGame(GameController game){
+	public void startGame(){
+		Thread td = new Thread(this);
+		td.start();
+	}
+	
+	@Override
+	public void run() {
 		Thread td = new Thread(game);
 		td.start();
-		try {
-			td.join();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		while(td.isAlive()){
+			try {
+				td.sleep(100);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		finishGame();
+		
 	}
 	
-	public void finishGame(){
+	
+	public void  finishGame(){
 		
 		finished = new GameFinishedDialog(model.getGameController().getWinner().getPlayer().getName(), frame);
 	}
