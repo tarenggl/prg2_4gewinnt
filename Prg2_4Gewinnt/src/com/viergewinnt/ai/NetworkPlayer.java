@@ -16,6 +16,7 @@ public class NetworkPlayer extends Player {
 	
 	public NetworkPlayer(GameProperties gameProperties, String name, Socket client) {
 		super(Color.RED, name);
+		this.client = client;
 	}
 
 	@Override
