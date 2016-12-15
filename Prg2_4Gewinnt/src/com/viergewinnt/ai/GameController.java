@@ -123,4 +123,14 @@ public class GameController implements Runnable{
 	public void setWinner(Stone winner) {
 		this.winner = winner;
 	}
+
+	public Player getPlayer1() {
+		return player1;
+	}
+
+	public Player getPlayer2() {
+		return player2;
+	}
+	
+	
 }

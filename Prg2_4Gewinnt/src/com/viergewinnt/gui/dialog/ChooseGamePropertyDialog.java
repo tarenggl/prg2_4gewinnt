@@ -32,6 +32,8 @@ public class ChooseGamePropertyDialog extends JDialog {
 	private JComboBox<Integer> cCols;
 	private JButton bOk;
 	private Font f;
+	private final int defaultRow = 6;
+	private final int defaultCol = 7;
 	private final int maxRows = 12;
 	private final int minRows = 5;
 	private final int maxCols = 12;
@@ -63,19 +65,20 @@ public class ChooseGamePropertyDialog extends JDialog {
 		centerPanel.add(playerName);
 		addLabel("rows");
 		cRows = new JComboBox<>();
-		initComboBox(cRows, minRows, maxRows);
+		initComboBox(cRows, minRows, maxRows, defaultRow);
 		centerPanel.add(cRows);
 		addLabel("cols");
 		cCols = new JComboBox<>();
-		initComboBox(cCols, minCols, maxCols);
+		initComboBox(cCols, minCols, maxCols, defaultCol);
 		centerPanel.add(cCols);
 	}
 
-	public void initComboBox(JComboBox<Integer> box, int min, int max) {
+	public void initComboBox(JComboBox<Integer> box, int min, int max, int selected) {
 		for (; min <= max; min++) {
 			box.addItem(min);
 		}
 		box.setFont(f);
+		box.setSelectedItem(selected);
 	}
 
 	public void initializeButtons() {
