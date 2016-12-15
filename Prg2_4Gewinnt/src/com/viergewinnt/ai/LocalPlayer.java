@@ -10,7 +10,7 @@ public class LocalPlayer extends Player implements Runnable {
 	GameProperties gameProperties;
 
 	public LocalPlayer(String name) {
-		super(Color.YELLOW);
+		super(Color.YELLOW, name);
 	}
 
 	@Override

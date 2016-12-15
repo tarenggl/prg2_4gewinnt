@@ -11,7 +11,7 @@ public class ComputerPlayer extends Player {
 	GameProperties gameProperties;
 	
 	public ComputerPlayer(GameProperties gameProperties) {
-		super(Color.RED);
+		super(Color.RED, "Computer");
 		this.gameProperties = gameProperties;
 	}
 

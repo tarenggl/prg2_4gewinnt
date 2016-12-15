@@ -10,7 +10,7 @@ import com.viergewinnt.gui.dialog.ChooseGamePropertyDialog;
 import com.viergewinnt.gui.panel.GameContainer;
 import com.viergewinnt.model.PlayGameModel;
 
-public abstract class PlayGameController implements DrawableController{
+public abstract class PlayGameController implements DrawableController {
 
 	protected GameContainer view;
 	protected GameFrame frame;
@@ -19,7 +19,7 @@ public abstract class PlayGameController implements DrawableController{
 	public void show() {
 		ChooseGamePropertyDialog dialog = new ChooseGamePropertyDialog(model.getGameProperties(), frame);
 		dialog.setVisible(true);
-		Player localPlayer = new LocalPlayer("franz");
+		Player localPlayer = new LocalPlayer(dialog.getName());
 		model.setStonepressed(new AddStoneAction(model.getGameProperties(), localPlayer));
 		view= new GameContainer(model);
 		frame.SetNewContentPanel(view);
