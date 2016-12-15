@@ -22,9 +22,11 @@ public abstract class PlayGameController implements DrawableController, Runnable
 	private GameFinishedDialog finished;
 	private GameController game;
 	
-	public PlayGameController() {
+	public PlayGameController(GameFrame frame) {
+		this.frame = frame;
 		model = new PlayGameModel();
 		model.setGameProperties(new GameProperties(7, 6));
+		view = new GameContainer(model);
 	}
 	
 	protected void startGame(Player player1, Player player2) {		
