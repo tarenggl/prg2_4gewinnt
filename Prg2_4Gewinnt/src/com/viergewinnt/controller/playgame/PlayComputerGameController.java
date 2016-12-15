@@ -27,7 +27,7 @@ public class PlayComputerGameController extends PlayGameController {
 	public void show() {
 		ChooseGamePropertyDialog dialog = new ChooseGamePropertyDialog(model.getGameProperties(), frame);
 		dialog.setVisible(true);
-		Player localPlayer = new LocalPlayer(dialog.getName());
+		Player localPlayer = new LocalPlayer(dialog.getPlayerName());
 		startGame(localPlayer, new ComputerPlayer(model.getGameProperties()));
 	}
 }

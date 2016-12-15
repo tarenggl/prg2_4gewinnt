@@ -106,4 +106,8 @@ public class ChooseGamePropertyDialog extends JDialog {
 		label.setFont(f);
 		centerPanel.add(label);
 	}
+	
+	public String getPlayerName(){
+		return playerName.getText();
+	}
 }

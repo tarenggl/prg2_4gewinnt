@@ -26,7 +26,7 @@ public class GameHeader extends JPanel {
 	private DateFormat formatter;
 	private long counter;
 	
-	public GameHeader(GameController game) {
+	public GameHeader() {
 		super();
 		this.setBackground(Color.WHITE.brighter());
 		this.setLayout(new GridLayout(2, 4));
@@ -38,7 +38,7 @@ public class GameHeader extends JPanel {
 		pTurn = new StonePanel(Color.RED);
 		pPlayer1 = new StonePanel(Color.YELLOW);
 		pPlayer2 = new StonePanel(Color.RED);
-		setPlayer(game.getPlayer1().getName(), game.getPlayer2().getName());
+		setPlayer("Player1", "Player2");
 		gameTime = new Date();
 		formatter = new SimpleDateFormat("mm:ss");
 		addComponents();
