@@ -3,19 +3,20 @@ package com.viergewinnt.model;
 import java.awt.event.ActionListener;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
+import javax.swing.ListModel;
 
-import com.viergewinnt.controller.creategame.network.JoinNetworkGame;
+import com.viergewinnt.controller.creategame.network.JoinNetworkGameAction;
 import com.viergewinnt.network.data.GameHosterData;
 
 public class JoinNetworkGameModel {
 
 	private ActionListener searchGameHoster;
-	private JoinNetworkGame joinNetworkGame;
-	private DefaultListModel<GameHosterData> hoster;
+	private JoinNetworkGameAction joinNetworkGame;
+	private DefaultListModel<GameHosterData> hosterData;
 	private JList<GameHosterData> hosterList;
 	
 	public JoinNetworkGameModel() {
-		setHoster(new DefaultListModel<GameHosterData>());
+		hosterData = new DefaultListModel<>();
 	}
 	
 	public ActionListener getSearchGameHoster() {
@@ -26,20 +27,16 @@ public class JoinNetworkGameModel {
 		this.searchGameHoster = searchGameHoster;
 	}
 
-	public JoinNetworkGame getJoinNetworkGame() {
+	public JoinNetworkGameAction getJoinNetworkGame() {
 		return joinNetworkGame;
 	}
 
-	public void setJoinNetworkGame(JoinNetworkGame joinNetworkGame) {
+	public void setJoinNetworkGame(JoinNetworkGameAction joinNetworkGame) {
 		this.joinNetworkGame = joinNetworkGame;
 	}
 
 	public DefaultListModel<GameHosterData> getHoster() {
-		return hoster;
-	}
-
-	public void setHoster(DefaultListModel<GameHosterData> hoster) {
-		this.hoster = hoster;
+		return hosterData;
 	}
 
 	public JList<GameHosterData> getHosterList() {

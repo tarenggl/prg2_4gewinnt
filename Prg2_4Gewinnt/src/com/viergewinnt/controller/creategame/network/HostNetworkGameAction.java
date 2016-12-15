@@ -10,16 +10,16 @@ import java.net.SocketException;
 
 import javax.swing.JTextField;
 
-import com.viergewinnt.controller.creategame.HostNetworkGameController;
+import com.viergewinnt.controller.playgame.PlayNetworkGameController;
 import com.viergewinnt.network.NetworkDatagramHelper;
 import com.viergewinnt.network.data.GameHosterData;
 
 public class HostNetworkGameAction implements ActionListener {
 
 	private JTextField gameName;
-	private HostNetworkGameController networkGameController;
+	private PlayNetworkGameController networkGameController;
 	
-	public HostNetworkGameAction(JTextField gameName, HostNetworkGameController networkGameController) {
+	public HostNetworkGameAction(JTextField gameName, PlayNetworkGameController networkGameController) {
 		this.gameName = gameName; 
 		this.networkGameController = networkGameController;
 	}
@@ -40,13 +40,12 @@ public class HostNetworkGameAction implements ActionListener {
 					byte[] byteBuffer = new byte[1024];
 					DatagramPacket recievedRequest = new DatagramPacket(byteBuffer, 1024);
 					GameHosterData gameHoster = new GameHosterData(gameName.getText(), InetAddress.getLocalHost().getHostAddress(), 12344);
-					for (int i = 0; i < 5; i++) {
-						System.out.println("Server starts listening");
-						serverDatagrammsocket.receive(recievedRequest);
-						String received = new String(recievedRequest.getData());
-						System.out.println("Client requestMessage: " + received);
-						NetworkDatagramHelper.send(gameHoster, serverDatagrammsocket, recievedRequest);
-					}
+					System.out.println("Server starts listening");
+					serverDatagrammsocket.receive(recievedRequest);
+					String received = new String(recievedRequest.getData());
+					System.out.println("Client requestMessage: " + received);
+					NetworkDatagramHelper.send(gameHoster, serverDatagrammsocket, recievedRequest);
+					networkGameController.show();
 				} catch (SocketException ex) {
 					ex.printStackTrace();
 				} catch (IOException ex) {

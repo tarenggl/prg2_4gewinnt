@@ -16,7 +16,7 @@ import javax.swing.JScrollPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import com.viergewinnt.controller.creategame.network.JoinNetworkGame;
+import com.viergewinnt.controller.creategame.network.JoinNetworkGameAction;
 import com.viergewinnt.gui.dialog.ChooseGamePropertyDialog;
 import com.viergewinnt.model.JoinNetworkGameModel;
 import com.viergewinnt.network.FindHoster;
@@ -32,18 +32,18 @@ public class JoinGamePanel extends JPanel{
 	JButton searchHoster;
 	JList<GameHosterData> serverList;
 	JButton selectHoster;
-	JoinNetworkGame networkGame;
+	JoinNetworkGameAction networkGame;
 	
 	public JoinGamePanel(JoinNetworkGameModel model) {
 		initPanelSettings();
 		initSearchHoster(model.getSearchGameHoster());
-		initServerList(model.getHoster());
-		initSelectHoster(model.getSearchGameHoster());
+		serverList = model.getHosterList();
+		initServerList();
+		initSelectHoster(model.getJoinNetworkGame());
 		networkGame = model.getJoinNetworkGame();
 	}
 	
-	private void initServerList(DefaultListModel<GameHosterData> hoster) {
-		serverList = new JList<>(hoster);
+	private void initServerList() {
 		serverList.setLayoutOrientation(JList.HORIZONTAL_WRAP);
 		JScrollPane listScroller = new JScrollPane(serverList);
 		listScroller.setPreferredSize(new Dimension(300, 180));
