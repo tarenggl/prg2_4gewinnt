@@ -11,8 +11,7 @@ import java.util.Date;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import com.viergewinnt.ai.GameController;
-import com.viergewinnt.gameobjects.GameProperties;
+import com.viergewinnt.gameobjects.Player;
 
 public class GameHeader extends JPanel {
 
@@ -26,30 +25,24 @@ public class GameHeader extends JPanel {
 	private DateFormat formatter;
 	private long counter;
 	
-	public GameHeader() {
+	public GameHeader(Player player1, Player player2) {
 		super();
 		this.setBackground(Color.WHITE.brighter());
 		this.setLayout(new GridLayout(2, 4));
 		timeDesc = new GameHeaderLabel("Time:");
 		turn = new GameHeaderLabel("Turn:");
+		pTurn = new StonePanel(getBackground());
 		timeCount = new GameHeaderLabel("0");
-		lPlayer1 = new GameHeaderLabel();
-		lPlayer2 = new GameHeaderLabel();
-		pTurn = new StonePanel(Color.RED);
-		pPlayer1 = new StonePanel(Color.YELLOW);
-		pPlayer2 = new StonePanel(Color.RED);
-		setPlayer("Player1", "Player2");
+		lPlayer1 = new GameHeaderLabel(player1.getName());
+		lPlayer2 = new GameHeaderLabel(player2.getName());
+		pPlayer1 = new StonePanel(player1.getColor());
+		pPlayer2 = new StonePanel(player2.getColor());
 		gameTime = new Date();
 		formatter = new SimpleDateFormat("mm:ss");
 		addComponents();
-		startTimer();
-		
+		startTimer();		
 	}
 	
-	public void setPlayer(String player1, String player2){
-		lPlayer1.setText(player1);
-		lPlayer2.setText(player2);
-	}
 	private void addComponents(){
 		add(timeDesc);
 		add(timeCount);
@@ -64,7 +57,6 @@ public class GameHeader extends JPanel {
 	
 	private void startTimer(){
 		Timer timer = new Timer(100, new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				timeCount.setText(((Long)((new Date().getTime() - gameTime.getTime())/1000)).toString());
@@ -73,7 +65,5 @@ public class GameHeader extends JPanel {
 			}
 		});
 		timer.start();
-			
 	}
-
 }
