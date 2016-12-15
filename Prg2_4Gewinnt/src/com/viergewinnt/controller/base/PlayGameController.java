@@ -20,14 +20,11 @@ public abstract class PlayGameController implements DrawableController {
 	protected PlayGameModel model;
 	private GameFinishedDialog finished;
 	
-	public void show() {
-		ChooseGamePropertyDialog dialog = new ChooseGamePropertyDialog(model.getGameProperties(), frame);
-		dialog.setVisible(true);
-		Player localPlayer = new LocalPlayer(dialog.getName());
-		model.setStonepressed(new AddStoneAction(model.getGameProperties(), localPlayer));
+	protected void startGame(Player player1, Player player2) {		
+		model.setStonepressed(new AddStoneAction(model.getGameProperties()));
 		view= new GameContainer(model);
 		frame.SetNewContentPanel(view);
-		GameController game = new GameController(model.getGameProperties(), localPlayer, new ComputerPlayer(model.getGameProperties()));
+		GameController game = new GameController(model.getGameProperties(), player1, player2);
 		model.setGameController(game);
 		view.start();
 		startGame(game);

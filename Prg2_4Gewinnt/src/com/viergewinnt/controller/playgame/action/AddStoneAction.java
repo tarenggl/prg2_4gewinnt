@@ -10,11 +10,9 @@ import com.viergewinnt.gameobjects.Player;
 public class AddStoneAction implements MouseListener{
 
 	private GameProperties game;
-	private Player localPlayer;
 	
-	public AddStoneAction(GameProperties game, Player localPlayer) {
+	public AddStoneAction(GameProperties game) {
 		this.game = game;
-		this.localPlayer = localPlayer;
 	}
 
 	@Override
@@ -43,6 +41,6 @@ public class AddStoneAction implements MouseListener{
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		localPlayer.makeColSelection(GridCalculator.getActiveColumn(game, e.getX()));
+		game.getActivePlayer().makeColSelection(GridCalculator.getActiveColumn(game, e.getX()));
 	}
 }

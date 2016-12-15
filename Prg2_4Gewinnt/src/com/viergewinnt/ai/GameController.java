@@ -24,8 +24,12 @@ public class GameController implements Runnable{
 		while(!gameFinished()) {
 			try {
 				int column = game.getActivePlayer().makeTurn();
-				game.addStone(column);			
+				game.addStone(column);
 				switchPlayer();
+				if(game.getActivePlayer() instanceof NetworkPlayer)
+				{
+					((NetworkPlayer)game.getActivePlayer()).notifyTurn(column);
+				}
 			} catch(Exception ex) {
 				ex.printStackTrace();
 			}	
