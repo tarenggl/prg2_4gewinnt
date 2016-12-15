@@ -24,6 +24,7 @@ public class JoinGameNameDialog extends JDialog implements ActionListener {
 
 	public ActionListener al;
 	public KeyListener kl;
+	public JTextField playerName;
 	
 	public JoinGameNameDialog(JFrame owner){
 		super(owner, ModalityType.APPLICATION_MODAL);
@@ -37,7 +38,7 @@ public class JoinGameNameDialog extends JDialog implements ActionListener {
 		JLabel lName = new JLabel("Name:");
 		lName.setFont(f);
 		add(lName);
-		JTextField playerName = new JTextField();
+		playerName = new JTextField();
 		playerName.setFont(f);
 		playerName.addKeyListener(kl);
 		add(playerName);
@@ -76,5 +77,9 @@ public class JoinGameNameDialog extends JDialog implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		dispose();
+	}
+	
+	public String getPlayerName(){
+		return playerName.getText();
 	}
 }
