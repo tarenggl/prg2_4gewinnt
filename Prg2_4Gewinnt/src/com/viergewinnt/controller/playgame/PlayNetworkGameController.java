@@ -69,10 +69,10 @@ public class PlayNetworkGameController extends PlayGameController implements Dra
 		try {
 			Socket client = new Socket(gameHoster.getHostAddress(), gameHoster.getGamePort());
 			ObjectOutputStream outputClient = new ObjectOutputStream(client.getOutputStream());
-			ObjectInputStream clientObjectInput = new ObjectInputStream(client.getInputStream());
 			Player localPlayer = new LocalPlayer("Client");
 			outputClient.writeObject(localPlayer);
 			outputClient.flush();
+			ObjectInputStream clientObjectInput = new ObjectInputStream(client.getInputStream());
 			GameProperties hostGameProperties = (GameProperties)clientObjectInput.readObject();
 			model.setGameProperties(hostGameProperties);			
 			Player hostPlayer = (Player)clientObjectInput.readObject();
