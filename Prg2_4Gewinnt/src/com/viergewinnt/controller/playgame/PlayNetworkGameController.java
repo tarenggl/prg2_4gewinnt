@@ -45,7 +45,7 @@ public class PlayNetworkGameController extends PlayGameController implements Dra
 			Player clientPlayer = (Player)clientObjectInput.readObject();
 			ChooseGamePropertyDialog dialog = new ChooseGamePropertyDialog(model.getGameProperties(), frame);
 			dialog.setVisible(true);
-			Player localPlayer = new LocalPlayer(dialog.getName());
+			Player localPlayer = new LocalPlayer(dialog.getPlayerName());
 			ObjectOutputStream outputClient = new ObjectOutputStream(client.getOutputStream());
 			outputClient.writeObject(model.getGameProperties());
 			outputClient.flush();
