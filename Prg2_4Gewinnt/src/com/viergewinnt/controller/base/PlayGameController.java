@@ -25,7 +25,7 @@ public abstract class PlayGameController implements DrawableController, Runnable
 		model.setStonepressed(new AddStoneAction(model.getGameProperties()));
 		view= new GameContainer(model);
 		frame.SetNewContentPanel(view);
-		game = new GameController(model.getGameProperties(), localPlayer, new ComputerPlayer(model.getGameProperties()));
+		game = new GameController(model.getGameProperties(), player1, player2);
 		model.setGameController(game);
 		view.start();
 		startGame();

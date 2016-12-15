@@ -18,7 +18,7 @@ public class HostNetworkGameController implements DrawableController{
 		gameFrame = frame;
 		model = new HostGameModel();
 		model.setGameName(new JTextField());
-		model.setStartServer(new HostNetworkGameAction(model.getGameName()));
+		model.setStartServer(new HostNetworkGameAction(model.getGameName(), null));
 		view = new HostGamePanel(model);
 	}
 	

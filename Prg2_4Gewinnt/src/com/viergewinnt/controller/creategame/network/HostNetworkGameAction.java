@@ -10,15 +10,18 @@ import java.net.SocketException;
 
 import javax.swing.JTextField;
 
+import com.viergewinnt.controller.creategame.HostNetworkGameController;
 import com.viergewinnt.network.NetworkDatagramHelper;
 import com.viergewinnt.network.data.GameHosterData;
 
 public class HostNetworkGameAction implements ActionListener {
 
 	private JTextField gameName;
+	private HostNetworkGameController networkGameController;
 	
-	public HostNetworkGameAction(JTextField gameName) {
+	public HostNetworkGameAction(JTextField gameName, HostNetworkGameController networkGameController) {
 		this.gameName = gameName; 
+		this.networkGameController = networkGameController;
 	}
 	
 	private boolean udpServerStarted = false;
