@@ -19,7 +19,7 @@ public class GameFrame extends JFrame{
 
 	public GameFrame(){
 			super();
-			this.setBounds(Toolkit.getDefaultToolkit().getScreenSize().width/4 ,Toolkit.getDefaultToolkit().getScreenSize().height/4, Toolkit.getDefaultToolkit().getScreenSize().width/2 ,Toolkit.getDefaultToolkit().getScreenSize().height/2);
+			this.setBounds(Toolkit.getDefaultToolkit().getScreenSize().width/2 - (Toolkit.getDefaultToolkit().getScreenSize().height - 100)/2 , 0, Toolkit.getDefaultToolkit().getScreenSize().height - 100 ,Toolkit.getDefaultToolkit().getScreenSize().height);
 			this.setTitle("4-Gewinnt");
 			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			this.setVisible(true);
