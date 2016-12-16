@@ -5,7 +5,10 @@ import java.awt.event.ActionListener;
 import java.util.Hashtable;
 
 import com.viergewinnt.controller.base.DrawableController;
+import com.viergewinnt.controller.creategame.save.LoadGameAction;
+import com.viergewinnt.controller.creategame.save.SaveGameAction;
 import com.viergewinnt.controller.playgame.PlayComputerGameController;
+import com.viergewinnt.gameobjects.SaveGame;
 import com.viergewinnt.gui.GameFrame;
 import com.viergewinnt.gui.menubar.GameMenuBar;
 import com.viergewinnt.gui.panel.GameMenuPanel;
@@ -41,6 +44,8 @@ public class GameMenuController implements DrawableController {
 				new PlayComputerGameController(gameFrame).show();
 			}
 		});
+		actions.put("Spiel laden..", new LoadGameAction(gameFrame));
+		actions.put("Spiel speichern..", new SaveGameAction(new SaveGame(null, null, null), gameFrame));
 		model.setMenuActions(actions);	
 		view = new GameMenuPanel(model);
 		this.gameFrame = gameFrame;

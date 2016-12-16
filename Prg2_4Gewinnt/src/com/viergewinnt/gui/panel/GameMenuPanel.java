@@ -2,17 +2,11 @@ package com.viergewinnt.gui.panel;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import com.viergewinnt.controller.creategame.JoinNetworkGameController;
-import com.viergewinnt.gui.GameFrame;
-import com.viergewinnt.gui.panel.network.HostGamePanel;
-import com.viergewinnt.gui.panel.network.JoinGamePanel;
 import com.viergewinnt.model.GameMenuModel;
 
 public class GameMenuPanel extends JPanel {
