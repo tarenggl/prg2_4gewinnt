@@ -18,6 +18,7 @@ public class GameProperties implements Serializable {
 	private int gridwidth;
 	private int gridheight;
 	private Player activePlayer;
+	private Stone lastSetStone = null;
 	
 	
 	public GameProperties(int columns, int rows) {
@@ -51,6 +52,7 @@ public class GameProperties implements Serializable {
 		StoneMovement move = new StoneMovement(s, this);
 		move.start();
 		stoneList.add(s);
+		setLastSetStone(s);
 	}
 	
 	private boolean columnIsValid(int column) {
@@ -111,6 +113,14 @@ public class GameProperties implements Serializable {
 	
 	public void InitializeEmptyField() {
 		stoneList.clear();
+	}
+
+	public Stone getLastSetStone() {
+		return lastSetStone;
+	}
+
+	public void setLastSetStone(Stone lastSetStone) {
+		this.lastSetStone = lastSetStone;
 	}
 	
 }
