@@ -27,20 +27,48 @@ public class ComputerPlayer extends Player {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return new Random().nextInt(gameProperties.getColumns())+1; 
+		if (opponentWinCol() > gameProperties.getColumns() || opponentWinCol() < 1) {
+			return generateMove();
+		}else {
+			return opponentWinCol();
+		}
 	}
 	
-	public int oppnentWinCol() {
-		if ( horizontalWin(gameProperties.getLastSetStone())) {
-			return gameProperties.getLastSetStone().getColumn()+3;
-		}else if(verticalWin(gameProperties.getLastSetStone())){
-			return gameProperties.getLastSetStone().getColumn();
-		}else if(diagonalLeftWin(gameProperties.getLastSetStone())) {
-			return 1;
-		}else if(diagonalRightWin(gameProperties.getLastSetStone())) {
-			return 1;
+	public int opponentWinCol() {
+		
+		for(Stone s : gameProperties.getStoneList()) {
+			if( horizontalWin(s)) {
+				if(gameProperties.getStoneAt(s.getColumn()+3,s.getRow()) != null){
+					return 0;
+				}else {
+					return s.getColumn()+3;
+				}
+			}else if(verticalWin(s)){
+				if(gameProperties.getStoneAt(s.getColumn(),s.getRow()+3) != null){
+					return 0;
+				}else {
+					return s.getColumn();
+				}
+			}else if(diagonalLeftWin(s)) {
+				if(gameProperties.getStoneAt(s.getColumn()-3, s.getRow()+2) == null) {
+					return 0;
+				}else if(gameProperties.getStoneAt(s.getColumn()-3, s.getRow()+3) != null){
+					return 0;
+				}else {
+					return (s.getColumn() - 3);
+				}
+			}else if(diagonalRightWin(s)) {
+				if(gameProperties.getStoneAt(s.getColumn()+3, s.getRow()+2) == null) {
+					return 0;
+				}else if(gameProperties.getStoneAt(s.getColumn()+3, s.getRow()+3) != null){
+					return 0;
+				}else {
+					return (s.getColumn() + 3);
+				}
+			}
+			return 0;
 		}
-		return 1;
+		return 0;
 	}
 	
 	public int generateMove(){
