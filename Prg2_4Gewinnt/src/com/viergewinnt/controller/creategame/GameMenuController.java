@@ -8,9 +8,7 @@ import com.viergewinnt.controller.base.DrawableController;
 import com.viergewinnt.controller.playgame.PlayComputerGameController;
 import com.viergewinnt.gui.GameFrame;
 import com.viergewinnt.gui.menubar.GameMenuBar;
-import com.viergewinnt.gui.panel.GameContainer;
 import com.viergewinnt.gui.panel.GameMenuPanel;
-import com.viergewinnt.gui.panel.network.HostGamePanel;
 import com.viergewinnt.model.GameMenuModel;
 
 public class GameMenuController implements DrawableController {

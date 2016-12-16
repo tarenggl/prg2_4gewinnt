@@ -39,6 +39,7 @@ public class PlayNetworkGameController extends PlayGameController implements Dra
 	
 	public void startServer() {
 		try {
+			@SuppressWarnings("resource")
 			ServerSocket serverSocket = new ServerSocket(12344);
 			Socket client = serverSocket.accept();
 			ObjectInputStream clientObjectInput = new ObjectInputStream(client.getInputStream());
@@ -52,9 +53,9 @@ public class PlayNetworkGameController extends PlayGameController implements Dra
 			outputClient.writeObject(localPlayer);
 			outputClient.flush();
 			NetworkPlayer networkPlayer = new NetworkPlayer(model.getGameProperties(), clientPlayer.getName(), client);
-			startGame(localPlayer, networkPlayer);
+			initializeModel(localPlayer, networkPlayer);
+			startGame();			
 		} catch (IOException | ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -71,9 +72,9 @@ public class PlayNetworkGameController extends PlayGameController implements Dra
 			model.setGameProperties(hostGameProperties);			
 			Player hostPlayer = (Player)clientObjectInput.readObject();
 			NetworkPlayer networkPlayer = new NetworkPlayer(model.getGameProperties(), hostPlayer.getName(), client);
-			startGame(networkPlayer, localPlayer);
+			initializeModel(networkPlayer, localPlayer);
+			startGame();
 		} catch (IOException | ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

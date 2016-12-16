@@ -7,6 +7,10 @@ import com.viergewinnt.gameobjects.Player;
 
 public class LocalPlayer extends Player implements Runnable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	GameProperties gameProperties;
 
 	public LocalPlayer(String name) {

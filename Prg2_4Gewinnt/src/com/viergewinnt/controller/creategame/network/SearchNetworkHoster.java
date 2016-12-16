@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.DefaultListModel;
-import javax.swing.ListModel;
 
 import com.viergewinnt.network.NetworkDatagramHelper;
 import com.viergewinnt.network.data.GameHosterData;

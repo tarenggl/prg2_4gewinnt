@@ -8,6 +8,10 @@ import com.viergewinnt.gameobjects.Player;
 
 public class ComputerPlayer extends Player {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	GameProperties gameProperties;
 	
 	public ComputerPlayer(GameProperties gameProperties) {

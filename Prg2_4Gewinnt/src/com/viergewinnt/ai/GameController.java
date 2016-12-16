@@ -3,7 +3,6 @@ package com.viergewinnt.ai;
 import com.viergewinnt.gameobjects.GameProperties;
 import com.viergewinnt.gameobjects.Player;
 import com.viergewinnt.gameobjects.Stone;
-import com.viergewinnt.gui.dialog.GameFinishedDialog;
 
 public class GameController implements Runnable{
 	private Player player1;

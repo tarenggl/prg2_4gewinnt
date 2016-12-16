@@ -21,11 +21,14 @@ public abstract class PlayGameController implements DrawableController, Runnable
 		model.setGameProperties(new GameProperties(7, 6));
 	}
 	
-	protected void startGame(Player player1, Player player2) {		
+	protected void initializeModel(Player player1, Player player2) {		
 		model.setStonepressed(new AddStoneAction(model.getGameProperties()));
 		model.setPlayer1(player1);
 		model.setPlayer2(player2);
 		model.setGameController(new GameController(model.getGameProperties(), player1, player2));
+	}
+	
+	protected void startGame() {
 		Thread td = new Thread(this);
 		td.start();
 	}
@@ -45,5 +48,6 @@ public abstract class PlayGameController implements DrawableController, Runnable
 			}
 		}
 		new GameFinishedDialog(model.getGameController().getWinner().getPlayer().getName(), frame);
-	}
+		model.getGameProperties().InitializeEmptyField();
+	}	
 }

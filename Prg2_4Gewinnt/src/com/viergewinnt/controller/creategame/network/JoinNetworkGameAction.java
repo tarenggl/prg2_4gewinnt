@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JList;
 
 import com.viergewinnt.controller.playgame.PlayNetworkGameController;
-import com.viergewinnt.gui.dialog.ChooseGamePropertyDialog;
 import com.viergewinnt.network.data.GameHosterData;
 
 public class JoinNetworkGameAction implements ActionListener {
