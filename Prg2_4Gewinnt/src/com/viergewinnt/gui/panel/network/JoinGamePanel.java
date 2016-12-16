@@ -43,8 +43,6 @@ public class JoinGamePanel extends JPanel{
 		initServerList();
 		initSelectHoster(model.getJoinNetworkGame());
 		networkGame = model.getJoinNetworkGame();
-		playerName = new JoinGameNameDialog(model.getMainFrame());
-		playerName.setVisible(true);
 	}
 	
 	private void initServerList() {

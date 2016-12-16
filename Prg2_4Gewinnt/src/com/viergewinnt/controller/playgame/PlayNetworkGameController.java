@@ -14,14 +14,17 @@ import com.viergewinnt.gameobjects.GameProperties;
 import com.viergewinnt.gameobjects.Player;
 import com.viergewinnt.gui.GameFrame;
 import com.viergewinnt.gui.dialog.ChooseGamePropertyDialog;
+import com.viergewinnt.gui.panel.network.JoinGameNameDialog;
 import com.viergewinnt.network.data.GameHosterData;
 
 public class PlayNetworkGameController extends PlayGameController implements DrawableController{
 
 	private GameHosterData gameHoster;
+	private GameFrame gameFrame;
 
 	public PlayNetworkGameController(GameFrame gameFrame, GameHosterData gameHoster) {
 		super(gameFrame);
+		this.gameFrame = gameFrame;
 		this.gameHoster = gameHoster;
 	}
 	
@@ -62,6 +65,8 @@ public class PlayNetworkGameController extends PlayGameController implements Dra
 	
 	public void startClient() {
 		try {
+			JoinGameNameDialog playerName = new JoinGameNameDialog(gameFrame);
+			playerName.setVisible(true);
 			Socket client = new Socket(gameHoster.getHostAddress(), gameHoster.getGamePort());
 			ObjectOutputStream outputClient = new ObjectOutputStream(client.getOutputStream());
 			Player localPlayer = new LocalPlayer("Client");
