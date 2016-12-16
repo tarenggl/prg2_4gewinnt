@@ -5,7 +5,6 @@ import java.awt.event.MouseListener;
 
 import com.viergewinnt.ai.GridCalculator;
 import com.viergewinnt.gameobjects.GameProperties;
-import com.viergewinnt.gameobjects.Player;
 
 public class AddStoneAction implements MouseListener{
 

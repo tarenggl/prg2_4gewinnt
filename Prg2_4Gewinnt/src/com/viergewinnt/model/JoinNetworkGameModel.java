@@ -2,10 +2,12 @@ package com.viergewinnt.model;
 
 import java.awt.event.ActionListener;
 import javax.swing.DefaultListModel;
+import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.ListModel;
 
 import com.viergewinnt.controller.creategame.network.JoinNetworkGameAction;
+import com.viergewinnt.gui.GameFrame;
 import com.viergewinnt.network.data.GameHosterData;
 
 public class JoinNetworkGameModel {
@@ -46,4 +48,5 @@ public class JoinNetworkGameModel {
 	public void setHosterList(JList<GameHosterData> hosterList) {
 		this.hosterList = hosterList;
 	}	
+	
 }

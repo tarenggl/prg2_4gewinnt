@@ -8,6 +8,10 @@ import com.viergewinnt.ai.StoneMovement;
 
 public class GameProperties implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int columns;
 	private int rows;
 	private ArrayList<Stone> stoneList;
@@ -103,6 +107,10 @@ public class GameProperties implements Serializable {
 	
 	public void setActivePlayer(Player player) {
 		activePlayer = player;
+	}
+	
+	public void InitializeEmptyField() {
+		stoneList.clear();
 	}
 	
 }

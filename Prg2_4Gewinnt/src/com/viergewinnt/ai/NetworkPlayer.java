@@ -11,6 +11,10 @@ import com.viergewinnt.gameobjects.Player;
 
 public class NetworkPlayer extends Player {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	GameProperties gameProperties;
 	private Socket client;	
 	

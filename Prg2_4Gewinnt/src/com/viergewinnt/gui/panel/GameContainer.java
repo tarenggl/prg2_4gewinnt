@@ -20,7 +20,7 @@ public class GameContainer extends Sizeable implements Runnable{
 	public GameContainer(PlayGameModel model){
 		super();
 		this.setLayout(new BorderLayout());
-		header = new GameHeader();
+		header = new GameHeader(model.getPlayer1(), model.getPlayer2());
 		grid = new GameGrid(model.getGameProperties());
 		grid.addMouseListener(model.getStonepressed());
 		this.setBackground(Color.WHITE.brighter());

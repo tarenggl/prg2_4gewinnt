@@ -10,6 +10,8 @@ public class ComputerPlayer extends Player {
 
 	private GameProperties gameProperties;
 	private int depth = 4;
+
+	private static final long serialVersionUID = 1L;
 	
 	public ComputerPlayer(GameProperties gameProperties) {
 		super(Color.RED, "Computer");

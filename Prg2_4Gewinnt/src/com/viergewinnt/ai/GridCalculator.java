@@ -1,7 +1,5 @@
 package com.viergewinnt.ai;
 
-import java.awt.event.ActionEvent;
-
 import com.viergewinnt.gameobjects.GameProperties;
 
 public class GridCalculator {	
