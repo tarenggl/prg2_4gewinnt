@@ -20,7 +20,6 @@ public class GameMenuPanel extends Sizeable{
 	
 	public GameMenuPanel(GameMenuModel model){
 		amountOfComponents = 0;
-		//setPreferredSize(new Dimension(width, height));
 		this.setBackground(Color.GRAY.brighter());
 		setLayout(null);
 		this.model = model;
@@ -28,7 +27,7 @@ public class GameMenuPanel extends Sizeable{
 	
 	private void initializeButton(String buttonDescription, ActionListener action){
 		JButton button = new JButton(buttonDescription);
-		button.setBounds(getWidth()/4, getHeight()/3 + getHeight()/15 * amountOfComponents + getHeight()/15*amountOfComponents, getWidth()/2, getHeight()/15);
+		button.setBounds(getWidth()/4, getHeight()/5 + (getHeight()/20) * amountOfComponents, getWidth()/2, getHeight()/20);
 		button.setFont(new Font("Arial", Font.PLAIN, 30));
 		button.addActionListener(action);
 		add(button);
