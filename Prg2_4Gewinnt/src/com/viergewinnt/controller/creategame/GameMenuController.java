@@ -45,14 +45,14 @@ public class GameMenuController implements DrawableController {
 			}
 		});
 		actions.put("Spiel laden..", new LoadGameAction(gameFrame));
-		actions.put("Spiel speichern..", new SaveGameAction(new SaveGame(null, null, null), gameFrame));
+		actions.put("Spiel speichern..", new SaveGameAction(gameFrame));
 		model.setMenuActions(actions);	
 		view = new GameMenuPanel(model);
 		this.gameFrame = gameFrame;
 	}
 	
 	public void show() {
-		gameFrame.SetNewContentPanel(view);
+		gameFrame.SetNewContentPanel(view, null);
 		gameFrame.setJMenuBar(new GameMenuBar(model, "Spiel"));
 	}
 }

@@ -4,6 +4,7 @@ import com.viergewinnt.ai.GameController;
 import com.viergewinnt.controller.playgame.action.AddStoneAction;
 import com.viergewinnt.gameobjects.GameProperties;
 import com.viergewinnt.gameobjects.Player;
+import com.viergewinnt.gameobjects.SaveGame;
 import com.viergewinnt.gui.GameFrame;
 import com.viergewinnt.gui.dialog.GameFinishedDialog;
 import com.viergewinnt.gui.panel.GameContainer;
@@ -37,7 +38,7 @@ public abstract class PlayGameController implements DrawableController, Runnable
 	public void run() {
 		view = new GameContainer(model);
 		view.start();
-		frame.SetNewContentPanel(view);
+		frame.SetNewContentPanel(view, new SaveGame(model.getGameProperties(), model.getPlayer1(), model.getPlayer2()));
 		Thread td = new Thread(model.getGameController());
 		td.start();
 		while(td.isAlive()){

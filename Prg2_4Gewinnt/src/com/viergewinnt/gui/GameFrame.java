@@ -4,12 +4,9 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
+import com.viergewinnt.gameobjects.SaveGame;
 import com.viergewinnt.gui.base.Sizeable;
-import com.viergewinnt.gui.menubar.GameMenuBar;
-import com.viergewinnt.gui.panel.GameMenuPanel;
-import com.viergewinnt.model.GameMenuModel;
 
 public class GameFrame extends JFrame{
 
@@ -18,6 +15,8 @@ public class GameFrame extends JFrame{
 	 */
 	private static final long serialVersionUID = 1L;
 
+	private SaveGame currentGame;
+	
 	public GameFrame(){
 			super();
 			this.setBounds(Toolkit.getDefaultToolkit().getScreenSize().width/2 - (Toolkit.getDefaultToolkit().getScreenSize().height - 300)/2 , 100, Toolkit.getDefaultToolkit().getScreenSize().height - 300 ,Toolkit.getDefaultToolkit().getScreenSize().height - 200);
@@ -26,12 +25,20 @@ public class GameFrame extends JFrame{
 			this.setVisible(true);
 	}
 	
-	public void SetNewContentPanel(Sizeable container){
+	public void SetNewContentPanel(Sizeable container, SaveGame currentGame){
 		Dimension d = getContentPane().getSize();
 		setContentPane(container);
 		getContentPane().setPreferredSize(d);
 		pack();
 		container.orderComponents();
-		
+		this.currentGame = currentGame;
+	}
+	
+	public void SetNewContentPanel(Sizeable container){
+		SetNewContentPanel(container, null);
+	}
+	
+	public SaveGame getCurrentGame() {
+		return currentGame;
 	}
 }

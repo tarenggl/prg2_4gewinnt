@@ -7,10 +7,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import com.viergewinnt.controller.playgame.PlayComputerGameController;
 import com.viergewinnt.controller.playgame.PlayLoadedGameController;
 import com.viergewinnt.gameobjects.SaveGame;
 import com.viergewinnt.gui.GameFrame;

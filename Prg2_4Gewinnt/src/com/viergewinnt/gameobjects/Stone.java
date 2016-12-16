@@ -5,11 +5,16 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GraphicsEnvironment;
 import java.awt.geom.Ellipse2D;
+import java.io.Serializable;
 
 import com.viergewinnt.ai.GridCalculator;
 
-public class Stone{
+public class Stone implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Player player;
 	private Color color;
 	private int column;

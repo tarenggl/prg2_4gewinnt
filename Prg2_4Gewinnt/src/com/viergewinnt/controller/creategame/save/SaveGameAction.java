@@ -7,26 +7,23 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import com.viergewinnt.gameobjects.SaveGame;
+import com.viergewinnt.gui.GameFrame;
 
 public class SaveGameAction implements ActionListener{
 
-	private SaveGame saveGame;
 	private JFileChooser fileChooser;
-	private JFrame parent;
+	private GameFrame gameFrame;
 	
-	public SaveGameAction (SaveGame saveGame, JFrame parent) {
-		this.saveGame = saveGame;
+	public SaveGameAction (GameFrame gameFrame) {
 		this.fileChooser = new JFileChooser();
-		this.parent = parent;
+		this.gameFrame = gameFrame;
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		switch (fileChooser.showSaveDialog(parent))
+		switch (fileChooser.showSaveDialog(gameFrame))
         {
            case JFileChooser.APPROVE_OPTION:
               save(fileChooser.getSelectedFile().getAbsolutePath());
@@ -38,7 +35,7 @@ public class SaveGameAction implements ActionListener{
 	
 	private void save(String fileName) {
 		try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(fileName))) {
-			objectOutputStream.writeObject(saveGame);
+			objectOutputStream.writeObject(gameFrame.getCurrentGame());
 		} catch (IOException exception) {
 			exception.printStackTrace();
 		}
