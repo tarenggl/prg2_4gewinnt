@@ -48,6 +48,14 @@ public abstract class PlayGameController implements DrawableController, Runnable
 				e.printStackTrace();
 			}
 		}
+		while(model.getGameProperties().isAnyStoneMoving()) {
+			try {
+				Thread.sleep(10);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		model.getGameProperties().initWinningMove();
 		new GameFinishedDialog(model.getGameController().getWinner().getPlayer().getName(), frame);
 		model.getGameProperties().InitializeEmptyField();
 	}	

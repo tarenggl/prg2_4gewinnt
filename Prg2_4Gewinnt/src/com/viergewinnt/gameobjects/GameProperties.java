@@ -1,9 +1,11 @@
 package com.viergewinnt.gameobjects;
 
+import java.awt.Color;
 import java.io.Serializable;
 import java.util.ArrayList;
 
 import com.viergewinnt.ai.ComputerPlayer;
+import com.viergewinnt.ai.GridCalculator;
 import com.viergewinnt.ai.StoneMovement;
 
 public class GameProperties implements Serializable {
@@ -123,4 +125,41 @@ public class GameProperties implements Serializable {
 		this.lastSetStone = lastSetStone;
 	}
 	
+	public void initWinningMove() {
+		Thread td = new Thread(new WinningStoneMove(GridCalculator.getWinningStones(this)));
+		td.start();
+	}
+	
+	public boolean isAnyStoneMoving() {
+		for(Stone s: stoneList) {
+			if(s.isActive())
+				return true;
+		}
+		return false;
+	}
+	
+	private class WinningStoneMove implements Runnable {
+		ArrayList<Stone> winningStones;
+		
+		public WinningStoneMove(ArrayList<Stone> winningStones) {
+			this.winningStones = winningStones;
+		}
+		
+		@Override
+		public void run() {
+			Color initialColor = winningStones.get(0).getColor();
+			Color winningColor = Color.BLACK;
+			for(int i = 0; i < 18; i++)
+			{
+				for (Stone stone : winningStones) {
+					stone.setColor(i % 2 == 0 ? winningColor: initialColor);
+				}
+				try {
+					Thread.sleep(500);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
 }

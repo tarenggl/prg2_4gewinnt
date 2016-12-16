@@ -14,7 +14,8 @@ public class GameFinishedDialog extends JDialog {
 	private static final long serialVersionUID = 1L;
 
 	public GameFinishedDialog(String winner,JFrame owner) {
-		super();
+		super(owner);
+		setModal(true);
 		Font f = new Font("Arial", Font.PLAIN, 20);
 		setTitle("Spiel beendet");
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -24,8 +25,6 @@ public class GameFinishedDialog extends JDialog {
 		label.setFont(f);
 		add(label);
 		setVisible(true);
-		
-		
 	}
 
 }
