@@ -6,6 +6,7 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import com.viergewinnt.gui.base.Sizeable;
 import com.viergewinnt.gui.menubar.GameMenuBar;
 import com.viergewinnt.gui.panel.GameMenuPanel;
 import com.viergewinnt.model.GameMenuModel;
@@ -25,10 +26,12 @@ public class GameFrame extends JFrame{
 			this.setVisible(true);
 	}
 	
-	public void SetNewContentPanel(JPanel container){
+	public void SetNewContentPanel(Sizeable container){
 		Dimension d = getContentPane().getSize();
 		setContentPane(container);
 		getContentPane().setPreferredSize(d);
 		pack();
+		container.orderComponents();
+		
 	}
 }

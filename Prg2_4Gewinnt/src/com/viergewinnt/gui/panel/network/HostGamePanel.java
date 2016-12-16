@@ -4,9 +4,11 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+
+import com.viergewinnt.gui.base.Sizeable;
 import com.viergewinnt.model.HostGameModel;
 
-public class HostGamePanel extends JPanel {
+public class HostGamePanel extends Sizeable {
 
 	/**
 	 * 
@@ -26,5 +28,11 @@ public class HostGamePanel extends JPanel {
 		add(model.getGameName());
 		add(hostGame);
 		setBackground(Color.GRAY.brighter());
+	}
+
+	@Override
+	public void orderComponents() {
+		// TODO Auto-generated method stub
+		
 	}
 }

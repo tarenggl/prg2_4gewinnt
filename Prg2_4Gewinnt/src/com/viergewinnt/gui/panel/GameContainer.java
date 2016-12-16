@@ -5,10 +5,11 @@ import java.awt.Color;
 
 import javax.swing.JPanel;
 
+import com.viergewinnt.gui.base.Sizeable;
 import com.viergewinnt.model.PlayGameModel;
 
 
-public class GameContainer extends JPanel implements Runnable{
+public class GameContainer extends Sizeable implements Runnable{
 	/**
 	 * 
 	 */
@@ -47,5 +48,11 @@ public class GameContainer extends JPanel implements Runnable{
 				e.printStackTrace();
 			}
 		}
+	}
+
+	@Override
+	public void orderComponents() {
+		// TODO Auto-generated method stub
+		
 	}
 }

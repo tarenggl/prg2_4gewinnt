@@ -8,11 +8,10 @@ import com.viergewinnt.gameobjects.Player;
 
 public class ComputerPlayer extends Player {
 
-	/**
-	 * 
-	 */
+	private GameProperties gameProperties;
+	private int depth = 4;
+
 	private static final long serialVersionUID = 1L;
-	GameProperties gameProperties;
 	
 	public ComputerPlayer(GameProperties gameProperties) {
 		super(Color.RED, "Computer");
@@ -30,5 +29,16 @@ public class ComputerPlayer extends Player {
 		return new Random().nextInt(gameProperties.getColumns())+1; 
 	}
 	
+	public int max() {
+		int maxValue = -100;
+		generateMove();
+		
+		return 1;
+	}
+	
+	public int generateMove(){
+		
+		return new Random().nextInt(gameProperties.getColumns())+1;
+	}
 	
 }
