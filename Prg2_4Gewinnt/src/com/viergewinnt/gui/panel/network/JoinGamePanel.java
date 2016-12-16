@@ -17,12 +17,13 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import com.viergewinnt.controller.creategame.network.JoinNetworkGameAction;
+import com.viergewinnt.gui.base.Sizeable;
 import com.viergewinnt.gui.dialog.ChooseGamePropertyDialog;
 import com.viergewinnt.model.JoinNetworkGameModel;
 import com.viergewinnt.network.FindHoster;
 import com.viergewinnt.network.data.GameHosterData;
 
-public class JoinGamePanel extends JPanel{
+public class JoinGamePanel extends Sizeable{
 
 	/**
 	 * 
@@ -65,5 +66,11 @@ public class JoinGamePanel extends JPanel{
 	private void initPanelSettings() {
 		this.setLayout(new GridLayout(1, 3));
 		this.setBackground(Color.GRAY.brighter());
+	}
+
+	@Override
+	public void orderComponents() {
+		// TODO Auto-generated method stub
+		
 	}
 }
