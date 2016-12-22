@@ -37,7 +37,7 @@ public class ComputerPlayer extends Player {
 	public int opponentWinCol() {
 		
 		for(Stone s : gameProperties.getStoneList()) {
-			if( horizontalWin(s)) {
+			if( horizontalLeftWin(s)) {
 				if(gameProperties.getStoneAt(s.getColumn()+3,s.getRow()) != null){
 					return 0;
 				}else {
@@ -73,14 +73,27 @@ public class ComputerPlayer extends Player {
 	
 	public int generateMove(){
 		
-		return new Random().nextInt(gameProperties.getColumns())+1;
+ 		return new Random().nextInt(gameProperties.getColumns())+1;
 	}
 	
-	public boolean horizontalWin(Stone stone) {
+	public boolean horizontalRightWin(Stone stone) {
 		int row = stone.getRow();
 		int column = stone.getColumn();
 		Stone currentStone;
 		for(int i = column+1; i <= column + 2; i++){
+			currentStone = gameProperties.getStoneAt(i, row);
+			if(currentStone == null || currentStone.getColor() != stone.getColor()) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	public boolean horizontalLeftWin(Stone stone) {
+		int row = stone.getRow();
+		int column = stone.getColumn();
+		Stone currentStone;
+		for(int i = column-1; i <= column - 2; i--){
 			currentStone = gameProperties.getStoneAt(i, row);
 			if(currentStone == null || currentStone.getColor() != stone.getColor()) {
 				return false;
@@ -120,7 +133,7 @@ public class ComputerPlayer extends Player {
 		int row = stone.getRow();
 		int column = stone.getColumn();
 		Stone currentStone;
-		for(int i = 1; i <= 3; i++) {
+		for(int i = 1; i <= 2; i++) {
 			currentStone = gameProperties.getStoneAt(column+i, row+i);
 			if(currentStone == null || currentStone.getColor() != stone.getColor()) {
 				return false;
