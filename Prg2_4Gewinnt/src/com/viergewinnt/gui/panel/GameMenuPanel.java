@@ -32,7 +32,7 @@ public class GameMenuPanel extends Sizeable{
 	
 	private void initializeButton(String buttonDescription, ActionListener action){
 		JButton button = new JButton(buttonDescription);
-		button.setBounds(getWidth()/4, getHeight()/5 + (getHeight()/20) * amountOfComponents + (getHeight()/20)*amountOfComponents, getWidth()/2, getHeight()/20);
+		button.setBounds(getWidth()/5, getHeight()/5 + (getHeight()/20) * amountOfComponents + (getHeight()/20)*amountOfComponents, (getWidth()/5)*3, getHeight()/20);
 		button.setFont(new Font("Arial", Font.PLAIN, 30));
 		button.addActionListener(action);
 		add(button);
@@ -44,7 +44,7 @@ public class GameMenuPanel extends Sizeable{
 	public void orderComponents() {
 		int amountofButtons=0;
 		for( JButton b : buttons) {
-			b.setBounds(getWidth()/4, getHeight()/5 + (getHeight()/20) * amountofButtons + (getHeight()/20)*amountofButtons, getWidth()/2, getHeight()/20);
+			b.setBounds(getWidth()/5, getHeight()/5 + (getHeight()/20) * amountofButtons + (getHeight()/20)*amountofButtons, (getWidth()/5)*3, getHeight()/20);
 			amountofButtons++;
 		}
 	}
