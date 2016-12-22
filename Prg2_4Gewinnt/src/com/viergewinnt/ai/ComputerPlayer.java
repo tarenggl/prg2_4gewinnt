@@ -37,36 +37,38 @@ public class ComputerPlayer extends Player {
 	public int opponentWinCol() {
 		
 		for(Stone s : gameProperties.getStoneList()) {
-			if( horizontalLeftWin(s)) {
-				if(gameProperties.getStoneAt(s.getColumn()+3,s.getRow()) != null){
-					return 0;
-				}else {
-					return s.getColumn()+3;
-				}
-			}else if(verticalWin(s)){
-				if(gameProperties.getStoneAt(s.getColumn(),s.getRow()+3) != null){
-					return 0;
-				}else {
-					return s.getColumn();
-				}
-			}else if(diagonalLeftWin(s)) {
-				if(gameProperties.getStoneAt(s.getColumn()-3, s.getRow()+2) == null) {
-					return 0;
-				}else if(gameProperties.getStoneAt(s.getColumn()-3, s.getRow()+3) != null){
-					return 0;
-				}else {
-					return (s.getColumn() - 3);
-				}
-			}else if(diagonalRightWin(s)) {
-				if(gameProperties.getStoneAt(s.getColumn()+3, s.getRow()+2) == null) {
-					return 0;
-				}else if(gameProperties.getStoneAt(s.getColumn()+3, s.getRow()+3) != null){
-					return 0;
-				}else {
-					return (s.getColumn() + 3);
-				}
+			if (s.getColor() == Color.YELLOW) {
+					if( horizontalRightWin(s)) {
+						if(gameProperties.getStoneAt(s.getColumn()+3,s.getRow()) != null){
+							return 0;
+						}else {
+							return s.getColumn()+3;
+						}
+					}else if(verticalWin(s)){
+						if(gameProperties.getStoneAt(s.getColumn(),s.getRow()+3) != null){
+							return 0;
+						}else {
+							return s.getColumn();
+						}
+					}else if(diagonalLeftWin(s)) {
+						if(gameProperties.getStoneAt(s.getColumn()-3, s.getRow()+2) == null) {
+							return 0;
+						}else if(gameProperties.getStoneAt(s.getColumn()-3, s.getRow()+3) != null){
+							return 0;
+						}else {
+							return (s.getColumn() - 3);
+						}
+					}else if(diagonalRightWin(s)) {
+						if(gameProperties.getStoneAt(s.getColumn()+3, s.getRow()+2) == null) {
+							return 0;
+						}else if(gameProperties.getStoneAt(s.getColumn()+3, s.getRow()+3) != null){
+							return 0;
+						}else {
+							return (s.getColumn() + 3);
+						}
+					}
+				return 0;
 			}
-			return 0;
 		}
 		return 0;
 	}
