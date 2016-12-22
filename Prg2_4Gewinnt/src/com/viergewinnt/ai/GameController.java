@@ -22,15 +22,12 @@ public class GameController implements Runnable{
 	@Override
 	public void run() {
 		game.setActivePlayer(player1);
-		while(!gameFinished()) {
+		while(!isGameFinished()) {
 			try {
 				int column = game.getActivePlayer().makeTurn();
 				game.addStone(column);
 				switchPlayer();
-				if(game.getActivePlayer() instanceof NetworkPlayer)
-				{
-					((NetworkPlayer)game.getActivePlayer()).notifyTurn(column);
-				}
+				game.getActivePlayer().notifyTurn(column);
 			} catch(Exception ex) {
 				ex.printStackTrace();
 			}	
@@ -45,7 +42,7 @@ public class GameController implements Runnable{
 			game.setActivePlayer(player1);
 	}
 	
-	public boolean gameFinished() {
+	public boolean isGameFinished() {
 		for(Stone s : game.getStoneList()) {
 			if(GridCalculator.verticalWin(game, s).size() + GridCalculator.horizontalWin(game, s).size() 
 					+ GridCalculator.diagonalLeftWin(game, s).size() + GridCalculator.diagonalRightWin(game, s).size() > 0) {
