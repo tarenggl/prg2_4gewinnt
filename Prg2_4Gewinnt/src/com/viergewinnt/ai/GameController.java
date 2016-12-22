@@ -34,7 +34,7 @@ public class GameController implements Runnable{
 			} catch(Exception ex) {
 				ex.printStackTrace();
 			}	
-		}		
+		}
 	}
 	
 	

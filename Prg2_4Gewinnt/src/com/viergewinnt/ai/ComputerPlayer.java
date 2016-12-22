@@ -28,6 +28,7 @@ public class ComputerPlayer extends Player {
 			e.printStackTrace();
 		}
 		if (opponentWinCol() > gameProperties.getColumns() || opponentWinCol() < 1) {
+			System.out.println("RANDOM MOVE!!!");
 			return generateMove();
 		}else {
 			return opponentWinCol();
@@ -144,6 +145,9 @@ public class ComputerPlayer extends Player {
 		return true;
 	}
 	
-	
+	@Override
+	public void notifyTurn(int column) {
+		
+	}
 	
 }
