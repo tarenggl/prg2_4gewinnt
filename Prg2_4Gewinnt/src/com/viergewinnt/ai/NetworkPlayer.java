@@ -35,6 +35,7 @@ public class NetworkPlayer extends Player {
 		return 0;
 	}
 	
+	@Override
 	public void notifyTurn(int column) {
 		try {
 			ObjectOutputStream clientOut = new ObjectOutputStream(client.getOutputStream());

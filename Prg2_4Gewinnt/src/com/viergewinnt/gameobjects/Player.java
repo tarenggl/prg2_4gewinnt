@@ -31,5 +31,9 @@ public abstract class Player implements Serializable{
 	
 	public void makeColSelection(int col) {
 		columnSelection = col;
+	}
+
+	public void notifyTurn(int column) {
+		
 	}	
 }
